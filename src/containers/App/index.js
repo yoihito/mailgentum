@@ -14,6 +14,7 @@ class App extends PureComponent {
     this.state = { isSignedIn: false };
   }
 
+
   googleSignInSuccess = (response) => {
     window.gapi.client.init({ discoveryDocs: DISCOVERY_DOCS })
       .then(() => {

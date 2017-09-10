@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import GoogleLogin from 'react-google-login/src';
-import ThreadsList from 'components/ThreadsList';
 import './SessionsNew.css';
 
-class SessionsNew extends Component {
+class SessionsNew extends React.Component {
 
   render() {
     return (
@@ -17,10 +17,15 @@ class SessionsNew extends Component {
             buttonText="Sign in with Google"
             onSuccess={this.props.onSigninSuccess}
             onFailure={(err) => console.log(err)}
+            isSignedIn
           />
       </div>
     );
   }
 }
+
+SessionsNew.propTypes = {
+  onSigninSuccess: PropTypes.func.isRequired
+};
 
 export default SessionsNew;
