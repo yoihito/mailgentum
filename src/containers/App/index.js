@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
-import {
-  Route, Redirect, Switch
-} from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import SessionsNew from 'containers/SessionsNew';
 import Dashboard from 'containers/Dashboard';
+import './App.css';
 
 const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest"];
 
@@ -24,27 +23,39 @@ class App extends PureComponent {
       });
   }
 
+  googleSignOut = () => {
+    window.gapi.auth2.getAuthInstance().signOut().then(() => {
+      this.setState({isSignedIn: false});
+    });
+  }
+
   render() {
     return (
-      <div>
-        <Switch>
-          <Route exact path="/" >
-            <Redirect to="/sessions/new" />
-          </Route>
-          <Route 
-            path="/sessions/new" 
-            render={(props) => {
+      <div className="App">
+        <div className="App-content">
+          <Switch>
+            <Route exact path="/" >
+              <Redirect to="/sessions/new" />
+            </Route>
+            <Route 
+              path="/sessions/new" 
+              render={(props) => {
+                if (this.state.isSignedIn) {
+                  return <Redirect to="/dashboard" />;
+                } else {
+                  return <SessionsNew {...props} onSigninSuccess={this.googleSignInSuccess} />
+                }
+              }} 
+            />
+            <Route path="/dashboard" render={(props) => {
               if (this.state.isSignedIn) {
-                return <Redirect to="/dashboard" />;
+                return <Dashboard onSignOut={this.googleSignOut} />;
               } else {
-                return <SessionsNew {...props} onSigninSuccess={this.googleSignInSuccess} />
+                return <Redirect to="/sessions/new" />;
               }
-            }} 
-          />
-          <Route path="/dashboard" render={(props) => (
-            this.state.isSignedIn ? <Dashboard /> : <Redirect to="/sessions/new" />
-          )} />
-        </Switch>
+            }} />
+          </Switch>
+        </div>
       </div>
     );
   }

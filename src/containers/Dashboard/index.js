@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class Dashboard extends React.Component {
+class Dashboard extends React.Component {
 
     componentDidMount() {
         window.gapi.client.gmail.users.threads
@@ -11,7 +12,16 @@ export default class Dashboard extends React.Component {
     }
 
     render() {
-        return <div>Dashboard</div>;
+    return <div>
+        <h2>Dashboard</h2>
+        <button onClick={this.props.onSignOut}>Sign out</button>
+      </div>;
     }
 
 }
+
+Dashboard.propTypes = {
+    onSignOut: PropTypes.func.isRequired
+}
+
+export default Dashboard;
