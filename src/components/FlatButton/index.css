@@ -1,6 +1,6 @@
 .FlatButton {
     background-color: var(--main-bg-color);
-    color: white;
+    color: var(--app-white-color);
     border: none;
     height: 48px;
     font-size: 18px;

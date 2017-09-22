@@ -1,4 +1,5 @@
 :root {
+  --app-white-color: rgb(230, 230, 230);
   --main-bg-color: #50246D;
   --tint-bg-color: #E2CFED;
   --shade-bg-color: #340D4E;
@@ -8,9 +9,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
+  color: #212121;
 }
 
 button {
+  font-family: 'Open Sans', sans-serif;
+}
+
+input {
   font-family: 'Open Sans', sans-serif;
 }
 

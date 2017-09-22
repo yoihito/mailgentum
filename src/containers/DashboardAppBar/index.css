@@ -6,18 +6,23 @@
     top: 0;
     display: flex;
     flex-direction: row;
-    padding: 0 12px;
 }
 
 .DashboardAppBar-left {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     flex-grow: 1;
+    margin-left: 24px;
 }
 
 .DashboardAppBar-right {
     display: flex;
     justify-content: flex-end;
-    flex-grow: 1;
-    
+    margin-left: 12px;
+    margin-right: 24px;
+}
+
+.SignOut {
+    margin-right: 12px;
 }
