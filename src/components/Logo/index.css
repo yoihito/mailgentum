@@ -1,0 +1,13 @@
+.Logo {
+    display: flex;
+    background-color: var(--main-bg-color);
+    color: white;
+    height: 100%;
+    font-size: 18px;
+    font-weight: 300;
+    align-items: center;
+}
+
+.Logo-title {
+    margin-left: 12px;
+}

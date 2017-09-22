@@ -1,0 +1,8 @@
+.Thread {
+    padding: 12px;
+    font-weight: 300;
+}
+
+.Thread:hover {
+    background-color: #E2CFED;
+}

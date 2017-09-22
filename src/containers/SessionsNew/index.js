@@ -1,20 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GoogleLogin from 'react-google-login/src';
+import './index.css';
 
 class SessionsNew extends React.Component {
 
   render() {
     return (
-      
-      <GoogleLogin 
-        clientId="305264766338-6vsljtlpiv51in5jriifh75u97nq916p.apps.googleusercontent.com" 
-        scope="https://mail.google.com/"
-        buttonText="Sign in with Google"
-        onSuccess={this.props.onSigninSuccess}
-        onFailure={(err) => console.log(err)}
-        isSignedIn
-      />
+      <div className="SessionsNew"> 
+        <GoogleLogin 
+          clientId="305264766338-6vsljtlpiv51in5jriifh75u97nq916p.apps.googleusercontent.com" 
+          scope="https://mail.google.com/"
+          buttonText="Sign in with Google"
+          onSuccess={this.props.onSigninSuccess}
+          onFailure={(err) => console.log(err)}
+          isSignedIn
+        />
+      </div>
     );
   }
 }

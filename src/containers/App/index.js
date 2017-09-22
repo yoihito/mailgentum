@@ -32,30 +32,28 @@ class App extends PureComponent {
   render() {
     return (
       <div className="App">
-        <div className="App-content">
-          <Switch>
-            <Route exact path="/" >
-              <Redirect to="/sessions/new" />
-            </Route>
-            <Route 
-              path="/sessions/new" 
-              render={(props) => {
-                if (this.state.isSignedIn) {
-                  return <Redirect to="/dashboard" />;
-                } else {
-                  return <SessionsNew {...props} onSigninSuccess={this.googleSignInSuccess} />
-                }
-              }} 
-            />
-            <Route path="/dashboard" render={(props) => {
+        <Switch>
+          <Route exact path="/" >
+            <Redirect to="/sessions/new" />
+          </Route>
+          <Route 
+            path="/sessions/new" 
+            render={(props) => {
               if (this.state.isSignedIn) {
-                return <Dashboard onSignOut={this.googleSignOut} />;
+                return <Redirect to="/dashboard" />;
               } else {
-                return <Redirect to="/sessions/new" />;
+                return <SessionsNew {...props} onSigninSuccess={this.googleSignInSuccess} />
               }
-            }} />
-          </Switch>
-        </div>
+            }} 
+          />
+          <Route path="/dashboard" render={(props) => {
+            if (this.state.isSignedIn) {
+              return <Dashboard onSignOut={this.googleSignOut} />;
+            } else {
+              return <Redirect to="/sessions/new" />;
+            }
+          }} />
+        </Switch>
       </div>
     );
   }

@@ -1,5 +1,17 @@
+:root {
+  --main-bg-color: #50246D;
+  --tint-bg-color: #E2CFED;
+  --shade-bg-color: #340D4E;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
+
+button {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
