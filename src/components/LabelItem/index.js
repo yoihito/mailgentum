@@ -1,26 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './index.css';
 
-class Thread extends React.Component {
+class LabelItem extends React.Component {
 
     render() {
         const { item } = this.props;
         return (
-            <div className="Thread">
+            <Link to={`/dashboard/labels/${item.id}`} className="LabelItem">
                 <div>
                     
                 </div>
                 <div>
-                    { item.snippet }
+                    { item.name }
                 </div>
-            </div>
+            </Link>
         )
     }
 }
 
-Thread.propTypes = {
+LabelItem.propTypes = {
     item: PropTypes.object
 };
 
-export default Thread;
+export default LabelItem;

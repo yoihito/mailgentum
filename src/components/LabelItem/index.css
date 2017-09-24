@@ -1,0 +1,12 @@
+.LabelItem {
+    display: block;
+    padding: 12px;
+    font-weight: 300;
+    line-height: 24px;
+    border-bottom: 1px solid #ddd;
+}
+
+.LabelItem:hover {
+    background-color: var(--tint-bg-color);
+    border-bottom: 1px var(--tint-bg-color) solid;
+}

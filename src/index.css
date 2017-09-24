@@ -3,13 +3,14 @@
   --main-bg-color: #50246D;
   --tint-bg-color: #E2CFED;
   --shade-bg-color: #340D4E;
+  --black-color: #212121;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
-  color: #212121;
+  color: var(--black-color);
 }
 
 button {
@@ -18,6 +19,11 @@ button {
 
 input {
   font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: var(--black-color);
 }
 
 
