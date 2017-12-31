@@ -1,9 +1,11 @@
 :root {
-  --app-white-color: rgb(230, 230, 230);
-  --main-bg-color: #50246D;
-  --tint-bg-color: #E2CFED;
-  --shade-bg-color: #340D4E;
+  --white-color: rgb(230, 230, 230);
   --black-color: #212121;
+  --shade-primary-color: #380a5f;
+  --primary-color: #5d0e9f;
+  --tint-primary-color: #d1c1e0;
+  --secondary-color: #FFF44B;
+  --main-bg-color: var(--primary-color);
 }
 
 body {

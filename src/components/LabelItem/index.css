@@ -7,6 +7,6 @@
 }
 
 .LabelItem:hover {
-    background-color: var(--tint-bg-color);
-    border-bottom: 1px var(--tint-bg-color) solid;
+    background-color: var(--tint-primary-color);
+    border-bottom: 1px var(--tint-primary-color) solid;
 }

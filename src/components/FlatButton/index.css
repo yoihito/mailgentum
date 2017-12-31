@@ -1,6 +1,6 @@
 .FlatButton {
     background-color: var(--main-bg-color);
-    color: var(--app-white-color);
+    color: var(--white-color);
     border: none;
     height: 48px;
     font-size: 18px;
@@ -9,5 +9,5 @@
 }
 
 .FlatButton:hover {
-    background-color: var(--shade-bg-color);
+    background-color: var(--shade-primary-color);
 }
