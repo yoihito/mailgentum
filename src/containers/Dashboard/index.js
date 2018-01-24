@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DashboardAppBar from 'containers/DashboardAppBar'
-import { Route, Switch } from 'react-router-dom';
-import ThreadsList from 'containers/ThreadsList';
-import LabelsList from 'containers/LabelsList';
+import { Route } from 'react-router-dom';
+import Labels from 'containers/Labels';
 import './index.css';
 
 class Dashboard extends React.Component {
@@ -13,20 +12,8 @@ class Dashboard extends React.Component {
 
         return (<div className="Dashboard">
             <DashboardAppBar onSignOut={onSignOut} />
-            <div className="Dashboard-content">
-                <Switch>
-                    <Route 
-                        exact 
-                        path="/dashboard"
-                        render={(props) => {
-                            return <LabelsList {...props} />;
-                        }}  
-                    />
-                    <Route 
-                        path="/dashboard/labels/:labelId" 
-                        component={ThreadsList} 
-                    />
-                </Switch>
+            <div className="Dashboard__content">
+                <Route path="/dashboard" component={Labels} />
             </div>
         </div>);
     }

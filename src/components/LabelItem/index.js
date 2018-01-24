@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './index.css';
 
+const predefinedLabelNames = {
+    INBOX: 'Inbox',
+    UNREAD: 'Unread',
+    '[Imap]/Archive': 'Archive',
+    '[Imap]/Drafts': 'Drafts',
+}
+
 class LabelItem extends React.Component {
 
     render() {
@@ -13,7 +20,7 @@ class LabelItem extends React.Component {
                     
                 </div>
                 <div>
-                    { item.name }
+                    { predefinedLabelNames[item.name] || item.name } 
                 </div>
             </Link>
         )

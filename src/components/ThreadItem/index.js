@@ -6,14 +6,13 @@ class ThreadItem extends React.Component {
 
     render() {
         const { item } = this.props;
+        console.log(item);
+        const lastMessage = item.messages[item.messages.length - 1];
         return (
             <div className="ThreadItem">
                 <div>
-                    
                 </div>
-                <div>
-                    { item.snippet }
-                </div>
+                <div dangerouslySetInnerHTML={{ __html: lastMessage.snippet }} />
             </div>
         )
     }
