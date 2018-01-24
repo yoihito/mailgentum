@@ -4,8 +4,9 @@ import isEqual from 'lodash.isequal';
 import ThreadItem from 'components/ThreadItem';
 import EntitiesList from 'components/EntitiesList';
 import ThreadsService from 'apis/ThreadsService';
+import Shadow from 'components/Shadow';
 
-class ThreadsList extends React.Component {
+class Threads extends React.Component {
 
     constructor(props) {
         super(props);
@@ -26,7 +27,6 @@ class ThreadsList extends React.Component {
     async loadThreads({ labelId }) {
         const threadsService = new ThreadsService();
         const threads = await threadsService.listThreads({ labelIds: labelId });
-        console.log(threads);
         this.setState({ threads: threads.sort((a,b) => +a.historyId < +b.historyId) });
     }
 
@@ -34,17 +34,15 @@ class ThreadsList extends React.Component {
         const { threads } = this.state;
         
         if (threads) {
-            return (
-                <EntitiesList items={threads} itemContainer={ThreadItem} />
-            );
+            return (<EntitiesList items={threads} itemContainer={ThreadItem} />);
         } else {
             return null;
         }
     }
 }
 
-ThreadsList.propTypes = {
+Threads.propTypes = {
     match: PropTypes.object.isRequired
 }
 
-export default ThreadsList;
+export default Shadow(Threads);

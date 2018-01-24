@@ -8,11 +8,15 @@ class ThreadItem extends React.Component {
         const { item } = this.props;
         console.log(item);
         const lastMessage = item.messages[item.messages.length - 1];
+        const isUnread = lastMessage.labelIds.indexOf('UNREAD') !== -1;
         return (
             <div className="ThreadItem">
                 <div>
                 </div>
-                <div dangerouslySetInnerHTML={{ __html: lastMessage.snippet }} />
+                <div 
+                    style={{ fontWeight: isUnread ? '700' : '300'}} 
+                    dangerouslySetInnerHTML={{ __html: lastMessage.snippet }} 
+                />
             </div>
         )
     }
