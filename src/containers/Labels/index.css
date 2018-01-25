@@ -2,3 +2,22 @@
     display: flex;
     height: 100%;
 }
+
+.Labels__threads {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.pageSlider-exit {
+    z-index: 1;
+}
+.pageSlider-enter {
+    z-index: 10;
+    transform: translate3d(100%, 0, 0);
+}
+
+.pageSlider-enter.pageSlider-enter-active {
+    transform: translate3d(0, 0, 0);
+    transition: all 600ms;
+}
