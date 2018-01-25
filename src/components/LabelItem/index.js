@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
+import classnames from 'classnames';
 import './index.css';
 
 const predefinedLabelNames = {
@@ -15,14 +16,14 @@ class LabelItem extends React.Component {
     render() {
         const { item } = this.props;
         return (
-            <Link to={`/dashboard/labels/${item.id}`} className="LabelItem">
-                <div>
-                    
-                </div>
+            <NavLink 
+                activeClassName="LabelItem--active"
+                className="LabelItem"
+                to={`/dashboard/labels/${item.id}`} >
                 <div>
                     { predefinedLabelNames[item.name] || item.name } 
                 </div>
-            </Link>
+            </NavLink>
         )
     }
 }
@@ -31,4 +32,4 @@ LabelItem.propTypes = {
     item: PropTypes.object
 };
 
-export default LabelItem;
+export default withRouter(LabelItem);

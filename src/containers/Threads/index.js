@@ -15,7 +15,7 @@ class Threads extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { threads: [] };
+        this.state = { };
     }
 
     componentDidMount() {
@@ -32,14 +32,15 @@ class Threads extends React.Component {
         const threadsService = new ThreadsService();
         const threads = await threadsService.listThreads({ labelIds: labelId });
         this.setState({ 
-            threads: threads.sort((a,b) => +a.historyId < +b.historyId),
+            threads: threads.sort((a,b) => +a.historyId > +b.historyId),
         });
     }
 
     render() {
         const { threads } = this.state;
         return (<div className="Threads">
-            <ShadowedScrollableList itemContainer={ThreadItem} items={threads}  />
+            {threads && <ShadowedScrollableList itemContainer={ThreadItem} items={threads}  /> }
+            {!threads && React.createElement(Shadow(ThreadItemsLoader))}
         </div>);
     }
 }

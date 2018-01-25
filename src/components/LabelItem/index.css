@@ -8,6 +8,10 @@
     text-align: center;
 }
 
+.LabelItem--active {
+    background-color: #ccc;
+}
+
 .LabelItem:hover {
     background-color: var(--tint-primary-color);
     border-bottom: 1px var(--tint-primary-color) solid;

@@ -9,3 +9,8 @@
     background-color: var(--tint-primary-color);
     border-bottom: 1px var(--tint-primary-color) solid;
 }
+
+.ThreadItem__header {
+    display: flex;
+    justify-content: space-between;
+}
