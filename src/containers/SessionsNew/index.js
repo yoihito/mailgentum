@@ -10,11 +10,11 @@ class SessionsNew extends React.Component {
       <div className="SessionsNew"> 
         <GoogleLogin 
           clientId="305264766338-6vsljtlpiv51in5jriifh75u97nq916p.apps.googleusercontent.com" 
-          scope="https://mail.google.com/ https://www.googleapis.com/auth/pubsub"
           buttonText="Sign in with Google"
-          onSuccess={this.props.onSigninSuccess}
-          onFailure={(err) => console.log(err)}
           isSignedIn
+          onFailure={(err) => console.log(err)}
+          onSuccess={this.props.onSigninSuccess}
+          scope="https://mail.google.com/ https://www.googleapis.com/auth/pubsub"
         />
       </div>
     );

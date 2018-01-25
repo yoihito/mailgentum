@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash.isequal';
-import ThreadItem from 'components/ThreadItem';
-import EntitiesList from 'components/EntitiesList';
 import ThreadsService from 'apis/ThreadsService';
 import Shadow from 'components/Shadow';
 import Scrollable from 'components/Scrollable';
+import ThreadItem from 'components/ThreadItem';
+import EntitiesList from 'components/EntitiesList';
+import ThreadItemsLoader from 'components/ThreadItemsLoader';
 import './index.css';
+
+const ShadowedScrollableList = Shadow(Scrollable(EntitiesList));
 
 class Threads extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = { threads: [] };
     }
 
@@ -37,14 +39,7 @@ class Threads extends React.Component {
     render() {
         const { threads } = this.state;
         return (<div className="Threads">
-            {
-                React.createElement(
-                    Shadow(Scrollable(EntitiesList)), {
-                        items: threads,
-                        itemContainer: ThreadItem,
-                    }
-                )
-            }
+            <ShadowedScrollableList itemContainer={ThreadItem} items={threads}  />
         </div>);
     }
 }

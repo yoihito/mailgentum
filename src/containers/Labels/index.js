@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import EntitiesList from 'components/EntitiesList';
@@ -7,7 +8,7 @@ import LabelsService from 'apis/LabelsService';
 import LabelItem from 'components/LabelItem';
 import './index.css';
 
-export default class Labels extends Component {
+class Labels extends Component {
     constructor(props) {
         super(props);
         
@@ -30,14 +31,14 @@ export default class Labels extends Component {
         const { labels } = this.state;
         return (
             <div className="Labels">
-                { labels &&  <EntitiesList items={labels} itemContainer={LabelItem} /> }
+                { labels &&  <EntitiesList itemContainer={LabelItem} items={labels} /> }
                 <div className="Labels__threads">
                     <TransitionGroup>
                         <CSSTransition
-                            key={location.pathname}
-                            timeout={500}
                             classNames="pageSlider"
+                            key={location.pathname}
                             mountOnEnter={false}
+                            timeout={500}
                             unmountOnExit={true}
                         >
                             <Switch>
@@ -51,3 +52,9 @@ export default class Labels extends Component {
         );
     }
 }
+
+Labels.propTypes = {
+    location: PropTypes.object.isRequired
+};
+
+export default Labels;

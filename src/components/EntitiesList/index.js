@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const EntitiesList = ({ items, itemContainer }) => {
+const EntitiesList = ({ itemContainer, items }) => {
     if (items) {
         return (<div>
             {
-                items.map((item) => React.createElement(itemContainer, { key: item.id, item }))
+                items.map((item) => React.createElement(itemContainer, { item, key: item.id }))
             }
             </div>);
     } else {
@@ -14,11 +14,11 @@ const EntitiesList = ({ items, itemContainer }) => {
 }
 
 EntitiesList.propTypes = {
-    items: PropTypes.array.isRequired,
     itemContainer: PropTypes.oneOfType([
         PropTypes.instanceOf(Function), 
         PropTypes.instanceOf(Component)
-    ])
+    ]),
+    items: PropTypes.array.isRequired
 }
 
 

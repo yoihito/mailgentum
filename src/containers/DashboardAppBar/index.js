@@ -17,7 +17,7 @@ class DashboardAppBar extends React.Component {
                     <SearchInput />
                 </div>
                 <div className="DashboardAppBar-right">
-                    <FlatButton style={{ height: '100%' }} onClick={this.props.onSignOut}>
+                    <FlatButton onClick={this.props.onSignOut} style={{ height: '100%' }} >
                         <DefaultScreen>
                             <span className="SignOut">Sign out</span>
                         </DefaultScreen>

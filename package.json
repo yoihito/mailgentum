@@ -8,6 +8,7 @@
     "lodash.isequal": "^4.5.0",
     "react": "^16.2.0",
     "react-animations": "^1.0.0",
+    "react-content-loader": "^3.0.1",
     "react-dom": "^16.2.0",
     "react-google-login": "^3.0.2",
     "react-responsive": "^4.0.3",
