@@ -32,7 +32,7 @@ export default class Labels extends Component {
                 <Switch>
                     <Route path="/dashboard/labels/:labelId" component={Threads} />
                     <Redirect from="/dashboard" to="/dashboard/labels/INBOX"/>
-                </Switch>        
+                </Switch>   
             </div>
         );
     }

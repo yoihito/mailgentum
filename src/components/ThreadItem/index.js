@@ -6,7 +6,6 @@ class ThreadItem extends React.Component {
 
     render() {
         const { item } = this.props;
-        console.log(item);
         const lastMessage = item.messages[item.messages.length - 1];
         const isUnread = lastMessage.labelIds.indexOf('UNREAD') !== -1;
         return (

@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const LabelsList = ({ items, itemContainer }) => {
+const EntitiesList = ({ items, itemContainer }) => {
     if (items) {
         return (<div>
             {
                 items.map((item) => React.createElement(itemContainer, { key: item.id, item }))
             }
-            
-        </div>);
+            </div>);
     } else {
         return null;
     }
 }
 
-LabelsList.propTypes = {
+EntitiesList.propTypes = {
     items: PropTypes.array.isRequired,
     itemContainer: PropTypes.oneOfType([
         PropTypes.instanceOf(Function), 
@@ -23,4 +22,4 @@ LabelsList.propTypes = {
 }
 
 
-export default LabelsList;
+export default EntitiesList;

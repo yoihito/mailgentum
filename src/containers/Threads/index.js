@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash.isequal';
+import { SlideRight } from 'animate-components';
 import ThreadItem from 'components/ThreadItem';
 import EntitiesList from 'components/EntitiesList';
 import ThreadsService from 'apis/ThreadsService';
 import Shadow from 'components/Shadow';
+import Scrollable from 'components/Scrollable';
+import 'index.css'
 
 class Threads extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = { };
     }
 
     componentDidMount() {
@@ -27,17 +30,22 @@ class Threads extends React.Component {
     async loadThreads({ labelId }) {
         const threadsService = new ThreadsService();
         const threads = await threadsService.listThreads({ labelIds: labelId });
-        this.setState({ threads: threads.sort((a,b) => +a.historyId < +b.historyId) });
+        this.setState({ animate: false}, () => {
+            this.setState({ 
+                threads: threads.sort((a,b) => +a.historyId < +b.historyId),
+                animate: true
+            });
+        });
     }
 
     render() {
-        const { threads } = this.state;
-        
-        if (threads) {
-            return (<EntitiesList items={threads} itemContainer={ThreadItem} />);
-        } else {
-            return null;
-        }
+        const { threads, animate } = this.state;
+        return (threads ? (<SlideRight style={{width: '100%'}} key={animate}>{React.createElement(
+            Shadow(Scrollable(EntitiesList)), {
+                items: threads, 
+                itemContainer: ThreadItem,
+            }
+        )}</SlideRight>) : null)
     }
 }
 
@@ -45,4 +53,4 @@ Threads.propTypes = {
     match: PropTypes.object.isRequired
 }
 
-export default Shadow(Threads);
+export default Threads;
