@@ -7,6 +7,13 @@ import './index.css';
 const predefinedLabelNames = {
     INBOX: 'Inbox',
     UNREAD: 'Unread',
+    STARRED: 'Starred',
+    SPAM: 'Spam',
+    DRAFT: 'Draft',
+    TRASH: 'Trash',
+    SENT: 'Sent',
+    CHAT: 'Chat',
+    IMPORTANT: 'Important',
     '[Imap]/Archive': 'Archive',
     '[Imap]/Drafts': 'Drafts',
 }

@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import Scrollable from 'components/Scrollable';
 import EntitiesList from 'components/EntitiesList';
 import Threads from 'containers/Threads';
 import LabelsService from 'apis/LabelsService';
 import LabelItem from 'components/LabelItem';
 import './index.css';
+
+const ScrollableList = Scrollable(EntitiesList);
 
 class Labels extends Component {
     constructor(props) {
@@ -31,7 +34,9 @@ class Labels extends Component {
         const { labels } = this.state;
         return (
             <div className="Labels">
-                { labels &&  <EntitiesList itemContainer={LabelItem} items={labels} /> }
+                { labels && (<div style={{minWidth: '174px' }} >
+                    <ScrollableList itemContainer={LabelItem} items={labels} />
+                </div>) }
                 <div className="Labels__threads">
                     <TransitionGroup>
                         <CSSTransition

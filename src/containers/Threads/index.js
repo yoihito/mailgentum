@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash.isequal';
+import parseMessage from 'gmail-api-parse-message';
 import ThreadsService from 'apis/ThreadsService';
 import Shadow from 'components/Shadow';
 import Scrollable from 'components/Scrollable';
@@ -30,9 +31,10 @@ class Threads extends React.Component {
 
     async loadThreads({ labelId }) {
         const threadsService = new ThreadsService();
-        const threads = await threadsService.listThreads({ labelIds: labelId });
+        let threads = await threadsService.listThreads({ labelIds: labelId });
+        threads = threads.map((thread) => parseMessage(thread.messages[thread.messages.length - 1]));
         this.setState({ 
-            threads: threads.sort((a,b) => +a.historyId > +b.historyId),
+            threads: threads.sort((a,b) => +a.internalDate < +b.internalDate),
         });
     }
 

@@ -8,23 +8,22 @@ class ThreadItem extends React.Component {
 
     render() {
         const { item } = this.props;
-        const lastMessage = item.messages[item.messages.length - 1];
-        const isUnread = lastMessage.labelIds.indexOf('UNREAD') !== -1;
-        const parsedMessage = parseMessage(lastMessage);
-        console.log(parsedMessage);
+        const isUnread = item.labelIds.indexOf('UNREAD') !== -1;
         return (
             <div className="ThreadItem">
-                <div className="ThreadItem__header">
+                <div className="ThreadItem__header" style={{ fontWeight: isUnread ? '700' : '300'}} >
                     <div>
-                        {parsedMessage.headers.from}
+                        {item.headers.from}
                     </div>
                     <div>
-                        {moment(parsedMessage.headers.date).fromNow()}
+                        {moment(item.headers.date).fromNow()}
                     </div>
                 </div>
+                <div style={{ fontWeight: isUnread ? '700' : '300'}} >
+                    { item.headers.subject }
+                </div>
                 <div 
-                    style={{ fontWeight: isUnread ? '700' : '300'}} 
-                    dangerouslySetInnerHTML={{ __html: lastMessage.snippet }} 
+                    dangerouslySetInnerHTML={{ __html: item.snippet }} 
                 />
             </div>
         )
