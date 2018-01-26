@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { withRouter, Route, Redirect, Switch } from 'react-router-dom';
 import SessionsNew from 'containers/SessionsNew';
 import Dashboard from 'containers/Dashboard';
 import './App.css';
@@ -12,7 +12,6 @@ class App extends PureComponent {
 
     this.state = { isSignedIn: false };
   }
-
 
   googleSignInSuccess = (response) => {
     window.gapi.client.init({ discoveryDocs: DISCOVERY_DOCS })
@@ -59,4 +58,4 @@ class App extends PureComponent {
   }
 }
 
-export default App;
+export default withRouter(App);

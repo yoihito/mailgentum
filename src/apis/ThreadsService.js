@@ -12,7 +12,7 @@ export default class ThreadsService extends BaseService{
             .list({userId, maxResults, labelIds: labelIds })
     }
 
-    async listThreadsWithMessage({ userId = 'me', maxResults = 25, labelIds }) {
+    async listDetailedThreads({ userId = 'me', maxResults = 25, labelIds }) {
         const { result: { threads, resultSizeEstimate } } = await this.listThreads({ userId, maxResults, labelIds });
         if (resultSizeEstimate > 0) {
             const threadsRequests = threads.map(thread => this.getThread({ threadId: thread.id }));
