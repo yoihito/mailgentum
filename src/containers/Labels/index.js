@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Scrollable from 'components/Scrollable';
 import EntitiesList from 'components/EntitiesList';
@@ -32,29 +32,33 @@ class Labels extends Component {
     render() {
         const { location } = this.props;
         const { labels } = this.state;
-        return (
-            <div className="Labels">
-                { labels && (<div style={{minWidth: '174px' }} >
-                    <ScrollableList itemContainer={LabelItem} items={labels} />
-                </div>) }
-                <div className="Labels__threads">
-                    <TransitionGroup>
-                        <CSSTransition
-                            classNames="pageSlider"
-                            key={location.pathname}
-                            mountOnEnter={false}
-                            timeout={500}
-                            unmountOnExit={true}
-                        >
-                            <Switch>
-                                <Route path="/dashboard/labels/:labelId" component={Threads} />
-                                <Redirect from="/dashboard" to="/dashboard/labels/INBOX"/>
-                            </Switch>
-                        </CSSTransition>
-                    </TransitionGroup>
+        if (labels) {
+            return (
+                <div className="Labels">
+                    <div style={{minWidth: '174px' }} >
+                        <ScrollableList itemContainer={LabelItem} items={labels} />
+                    </div>
+                    <div className="Labels__threads">
+                        <TransitionGroup>
+                            <CSSTransition
+                                classNames="Labels__sliders"
+                                key={location.pathname}
+                                mountOnEnter={true}
+                                timeout={500}
+                                unmountOnExit={true}
+                            >
+                                <div className="Labels__switch-container">
+                                    <Switch>
+                                        <Route path="/dashboard/labels/:labelId" component={Threads} />
+                                    </Switch>
+                                </div>
+                            </CSSTransition>
+                        </TransitionGroup>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        return null;
     }
 }
 

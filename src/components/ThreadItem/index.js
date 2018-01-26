@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import parseMessage from 'gmail-api-parse-message';
 import moment from 'moment';
 import './index.css';
 
