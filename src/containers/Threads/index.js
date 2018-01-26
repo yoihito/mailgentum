@@ -28,7 +28,7 @@ class Threads extends React.PureComponent {
     async loadThreads({ labelId }) {
         const threadsService = new ThreadsService();
         await delay(500);
-        let threads = await threadsService.listThreads({ labelIds: labelId });
+        let threads = await threadsService.listThreadsWithMessage({ labelIds: labelId });
         threads = threads.map((thread) => parseMessage(thread.messages[thread.messages.length - 1]));
         this.setState({ 
             threads: threads.sort((a,b) => b.internalDate - a.internalDate),

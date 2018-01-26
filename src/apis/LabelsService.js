@@ -1,11 +1,8 @@
 export default class LabelsService {
 
-    listLabels() {
-        return window.gapi.client.gmail.users.labels
-            .list({userId: 'me'})
-            .then(response => {
-                return response.result.labels;
-            });
+    async listLabels() {
+        const response = await window.gapi.client.gmail.users.labels.list({userId: 'me'})
+        return response.result.labels;
     }
 
 }

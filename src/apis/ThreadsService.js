@@ -1,23 +1,22 @@
-export default class ThreadsService {
+import BaseService from './BaseService';
 
-    async listThreads({ userId = 'me', maxResults = 25, labelIds }) {
-        let response = await window.gapi.client.gmail.users.threads
+export default class ThreadsService extends BaseService{
+
+    getThread({ userId= 'me', threadId: id }) {
+        return window.gapi.client.gmail.users.threads
+            .get({ id, userId })
+    }
+
+    listThreads({ userId = 'me', maxResults = 25, labelIds }) {
+        return window.gapi.client.gmail.users.threads
             .list({userId, maxResults, labelIds: labelIds })
-        const threads = response.result.threads;
-        if (threads) {
-            const batch = window.gapi.client.newBatch();
-            const threadsRequests = threads.map(thread => (
-                {
-                    thread,
-                    request: window.gapi.client.request({
-                        path: `gmail/v1/users/me/threads/${thread.id}`
-                    })
-                }
-            ));
-            threadsRequests.forEach(({thread, request }) => {
-                batch.add(request);
-            });
-            let response = await batch;
+    }
+
+    async listThreadsWithMessage({ userId = 'me', maxResults = 25, labelIds }) {
+        const { result: { threads, resultSizeEstimate } } = await this.listThreads({ userId, maxResults, labelIds });
+        if (resultSizeEstimate > 0) {
+            const threadsRequests = threads.map(thread => this.getThread({ threadId: thread.id }));
+            let response = await this.executeBatch(threadsRequests);
             return Object.values(response.result).map(threadResponse => threadResponse.result);
         } else {
             return [];
