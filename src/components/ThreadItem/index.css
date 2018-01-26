@@ -3,11 +3,13 @@
     font-weight: 300;
     line-height: 24px;
     border-bottom: 1px solid #ddd;
+    user-select: none
 }
 
 .ThreadItem:hover {
     background-color: var(--tint-primary-color);
     border-bottom: 1px var(--tint-primary-color) solid;
+    cursor: pointer;
 }
 
 .ThreadItem__header {
