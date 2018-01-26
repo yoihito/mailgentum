@@ -21,7 +21,7 @@ class App extends PureComponent {
     });
   }
 
-  googleSignInSuccess = (response) => {
+  googleSignInSuccess = () => {
     window.gapi.client.init({ discoveryDocs: DISCOVERY_DOCS })
       .then(() => {
         if (window.gapi.auth2.getAuthInstance().isSignedIn.get()) {

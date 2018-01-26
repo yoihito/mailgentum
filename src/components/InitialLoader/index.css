@@ -1,0 +1,41 @@
+.InitialLoader {
+    color: var(--primary-color);
+    font-size: 3em;
+    font-weight: 100;
+    user-select: none;
+}
+
+.letter {
+    /* position: relative; */
+    display: inline-block;
+    animation-name: shake;
+    animation-duration: 8000ms;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    from,
+    to {
+      transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
+    }
+  
+    0.5%,
+    1.5%,
+    2.5%,
+    3.5%,
+    4.5% {
+      transform: translate3d(0, -10px, 0) rotate3d(0, 0, 1, 10deg);
+    }
+  
+    1%,
+    2%,
+    3%,
+    4% {
+      transform: translate3d(0, 10px, 0) rotate3d(0, 0, -1, -10deg);
+    }
+
+    5% {
+      transform: translate3d(0, 0, 0)  rotate3d(0, 0, 1, 0deg);
+    }
+  }

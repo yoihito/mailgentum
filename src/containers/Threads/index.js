@@ -6,7 +6,6 @@ import delay from 'utils/delay';
 import ThreadsService from 'apis/ThreadsService';
 import Shadow from 'components/Shadow';
 import Scrollable from 'components/Scrollable';
-import MonitorLifecycle from 'components/MonitorLifecycle';
 import EmptyList from 'components/EmptyList';
 import ThreadItem from 'components/ThreadItem';
 import EntitiesList from 'components/EntitiesList';
@@ -40,10 +39,10 @@ class Threads extends React.PureComponent {
     render() {
         const { threads } = this.state;
         return (<div className="Threads">
-            {threads && (<div>
+            {threads && (<div style={{ height: '100%'}}>
                 <ShadowedScrollableList itemContainer={ThreadItem} items={threads}  />
                 <Switch>
-                    <Route path="/dashboard/threads/:threadId" component={Messages}/>
+                    <Route path="/dashboard/labels/:labelId/threads/:threadId" component={Messages}/>
                 </Switch>
             </div>) }
             {!threads && React.createElement(Shadow(ThreadItemsLoader))}
@@ -55,4 +54,4 @@ Threads.propTypes = {
     match: PropTypes.object.isRequired
 }
 
-export default MonitorLifecycle(Threads);
+export default Threads;
