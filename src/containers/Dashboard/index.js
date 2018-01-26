@@ -14,8 +14,9 @@ class Dashboard extends React.Component {
             <DashboardAppBar onSignOut={onSignOut} />
             <div className="Dashboard__content">
                 <Switch>
-                    <Redirect exact to="/dashboard/labels/INBOX" from="/dashboard"/>
-                    <Route path="/dashboard" component={Labels} />
+                    <Redirect exact to="/dashboard/labels/INBOX" from="/dashboard/labels"/>
+                    <Route path="/dashboard/labels" component={Labels} />
+                    <Redirect to="/dashboard/labels/INBOX" />
                 </Switch>
             </div>
         </div>);

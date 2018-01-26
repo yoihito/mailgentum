@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter, Route, Redirect, Switch } from 'react-router-dom';
 import SessionsNew from 'containers/SessionsNew';
 import Dashboard from 'containers/Dashboard';
@@ -11,6 +12,13 @@ class App extends PureComponent {
     super(props);
 
     this.state = { isSignedIn: false };
+  }
+
+  componentDidMount() {
+    console.log(this.props);
+    this.setState({
+      initialLocation: this.props.location
+    });
   }
 
   googleSignInSuccess = (response) => {
@@ -32,14 +40,11 @@ class App extends PureComponent {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/" >
-            <Redirect to="/sessions/new" />
-          </Route>
           <Route 
             path="/sessions/new" 
             render={(props) => {
               if (this.state.isSignedIn) {
-                return <Redirect to="/dashboard" />;
+                return <Redirect to={this.state.initialLocation.pathname} />;
               } else {
                 return <SessionsNew {...props} onSigninSuccess={this.googleSignInSuccess} />
               }
@@ -52,10 +57,17 @@ class App extends PureComponent {
               return <Redirect to="/sessions/new" />;
             }
           }} />
+          <Redirect to="/dashboard" />
         </Switch>
       </div>
     );
   }
 }
+
+App.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  })
+};
 
 export default withRouter(App);
