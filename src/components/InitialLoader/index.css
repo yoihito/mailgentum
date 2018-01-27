@@ -6,12 +6,11 @@
 }
 
 .letter {
-    /* position: relative; */
-    display: inline-block;
-    animation-name: shake;
     animation-duration: 8000ms;
-    animation-timing-function: linear;
     animation-iteration-count: infinite;
+    animation-name: shake;
+    animation-timing-function: linear;
+    display: inline-block;
 }
 
 @keyframes shake {

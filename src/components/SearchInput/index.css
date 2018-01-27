@@ -1,24 +1,24 @@
 .SearchInput {
-    display: flex;
     color: var(--white-color);
+    display: flex;
+    flex-grow: 1;
     font-size: 16px;
     font-weight: 300;
     height: 38px;
     margin-left: 24px;
-    flex-grow: 1;
 }
 
 .SearchInput-input {
     background-color: var(--main-bg-color);
+    border-radius: 0;
     border: 1px solid var(--white-color);
-    height: 36px;
-    padding: 0 12px;
     color: var(--white-color);
+    flex-grow: 1;
     font-size: 18px;
     font-weight: 300;
-    flex-grow: 1;
+    height: 36px;
+    padding: 0 12px;
     width: 100%;
-    border-radius: 0;
 }
 
 .SearchInput-input:focus {
@@ -30,19 +30,19 @@
 }
 
 .SearchInput-icon {
-    display: flex;
     align-items: center;
-    justify-content: center;
     background-color: var(--main-bg-color);
-    height: 36px;
-    width: 36px;
-    color: var(--white-color);
-    font-size: 16px;
-    font-weight: 300;
+    border-bottom: 1px solid var(--white-color);
     border-left: none;
     border-right: 1px solid var(--white-color);
     border-top: 1px solid var(--white-color);
-    border-bottom: 1px solid var(--white-color);
+    color: var(--white-color);
+    display: flex;
+    font-size: 16px;
+    font-weight: 300;
+    height: 36px;
+    justify-content: center;
+    width: 36px;
 }
 
 .SearchInput-icon:hover {

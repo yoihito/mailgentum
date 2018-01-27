@@ -1,11 +1,11 @@
 .Logo {
-    display: flex;
+    align-items: center;
     background-color: var(--main-bg-color);
     color: var(--white-color);
-    height: 100%;
+    display: flex;
     font-size: 18px;
     font-weight: 300;
-    align-items: center;
+    height: 100%;
 }
 
 .Logo-title {

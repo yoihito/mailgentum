@@ -5,24 +5,24 @@
 
 .Labels__threads {
     height: 100%;
-    width: 100%;
     position: relative;
+    width: 100%;
 }
 
 .Labels__switch-container {
-    position: absolute;
+    bottom: 0;
     left: 0;
+    position: absolute;
     right: 0;
     top: 0;
-    bottom: 0;
 }
 
 .Labels__sliders-exit {
     z-index: 1;
 }
 .Labels__sliders-enter {
-    z-index: 10;
     transform: translate3d(100%, 0, 0);
+    z-index: 10;
 }
 
 .Labels__sliders-enter.Labels__sliders-enter-active {
