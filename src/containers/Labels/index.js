@@ -24,9 +24,10 @@ class Labels extends Component {
 
     async loadLabels() {
         const labelsService = new LabelsService();
-        let labels = await labelsService.listLabels();
-        labels = labels.filter((item) => item.labelListVisibility !== 'labelHide');
+        let labels = await labelsService.listDetailLabels();
+        labels = labels.filter((item) => item.labelListVisibility !== 'labelHide' && item.id !== 'UNREAD');
         this.setState({ labels });
+        
     }
 
     render() {

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink, withRouter } from 'react-router-dom';
+import classnames from 'classnames';
 import './index.css';
 
 const predefinedLabelNames = {
@@ -24,10 +25,15 @@ class LabelItem extends React.Component {
         return (
             <NavLink 
                 activeClassName="LabelItem--active"
-                className="LabelItem"
+                className={classnames(
+                    {
+                        LabelItem: true,
+                        'LabelItem--unread': item.threadsUnread > 0
+                    }
+                )}
                 to={`/dashboard/labels/${item.id}`} >
                 <div>
-                    { predefinedLabelNames[item.name] || item.name } 
+                    { predefinedLabelNames[item.name] || item.name }{ item.threadsUnread > 0 && `(${item.threadsUnread})` }
                 </div>
             </NavLink>
         )

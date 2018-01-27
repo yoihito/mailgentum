@@ -11,6 +11,10 @@
     background-color: #ccc;
 }
 
+.LabelItem--unread {
+    font-weight: 600;
+}
+
 .LabelItem:hover {
     background-color: var(--tint-primary-color);
     border-bottom: 1px var(--tint-primary-color) solid;
