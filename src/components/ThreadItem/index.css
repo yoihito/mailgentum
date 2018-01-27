@@ -1,9 +1,14 @@
 .ThreadItem {
+    display: block;
     padding: 12px;
     font-weight: 300;
     line-height: 24px;
     border-bottom: 1px solid #ddd;
     user-select: none
+}
+
+.ThreadItem--active {
+    background-color: #ccc;
 }
 
 .ThreadItem:hover {

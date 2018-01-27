@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, matchPath } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Scrollable from 'components/Scrollable';
 import EntitiesList from 'components/EntitiesList';
@@ -27,12 +27,12 @@ class Labels extends Component {
         let labels = await labelsService.listDetailLabels();
         labels = labels.filter((item) => item.labelListVisibility !== 'labelHide' && item.id !== 'UNREAD');
         this.setState({ labels });
-        
     }
 
     render() {
         const { location } = this.props;
         const { labels } = this.state;
+        const match = matchPath(location.pathname, { path: '/dashboard/labels/:labelId/'});
         if (labels) {
             return (
                 <div className="Labels">
@@ -43,7 +43,7 @@ class Labels extends Component {
                         <TransitionGroup>
                             <CSSTransition
                                 classNames="Labels__sliders"
-                                key={location.pathname}
+                                key={match.params.labelId}
                                 mountOnEnter={true}
                                 timeout={500}
                                 unmountOnExit={true}

@@ -19,7 +19,7 @@ class Threads extends React.PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = { };
+        this.state = { isLoading: true };
     }
 
     componentDidMount() {
@@ -30,22 +30,32 @@ class Threads extends React.PureComponent {
         const threadsService = new ThreadsService();
         await delay(500);
         let threads = await threadsService.listDetailedThreads({ labelIds: labelId });
-        threads = threads.map((thread) => parseMessage(thread.messages[thread.messages.length - 1]));
+        const lastThreadMessages = threads.map((thread) => parseMessage(thread.messages[thread.messages.length - 1]));
+        const threadsMap = threads.reduce((acc, thread) => {
+            acc[thread.id] = thread; 
+            return acc;
+        }, {});
         this.setState({ 
-            threads: threads.sort((a,b) => b.internalDate - a.internalDate),
+            isLoading: false,
+            lastThreadMessages: lastThreadMessages.sort((a,b) => b.internalDate - a.internalDate),
+            threads: threadsMap
         });
     }
 
     render() {
-        const { threads } = this.state;
+        const { match: { params: { labelId } } } = this.props;
+        const { lastThreadMessages, isLoading, threads } = this.state;
         return (<div className="Threads">
-            {threads && (<div style={{ height: '100%'}}>
-                <ShadowedScrollableList itemContainer={ThreadItem} items={threads}  />
+            {!isLoading && (<div style={{ height: '100%'}}>
+                <ShadowedScrollableList itemContainer={ThreadItem} items={lastThreadMessages}  />
                 <Switch>
-                    <Route path="/dashboard/labels/:labelId/threads/:threadId" component={Messages}/>
+                    <Route 
+                        path={`/dashboard/labels/${labelId}/threads/:threadId`} 
+                        render={(props) => <Messages thread={threads[props.match.params.threadId]} {...props}/>}
+                    />
                 </Switch>
             </div>) }
-            {!threads && React.createElement(Shadow(ThreadItemsLoader))}
+            {isLoading && React.createElement(Shadow(ThreadItemsLoader))}
         </div>);
     }
 }

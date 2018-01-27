@@ -15,7 +15,6 @@ class App extends PureComponent {
   }
 
   componentDidMount() {
-    console.log(this.props);
     this.setState({
       initialLocation: this.props.location
     });

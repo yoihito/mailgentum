@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 import './index.css';
 
@@ -31,7 +31,7 @@ class LabelItem extends React.Component {
                         'LabelItem--unread': item.threadsUnread > 0
                     }
                 )}
-                to={`/dashboard/labels/${item.id}`} >
+                to={`/dashboard/labels/${item.id}/`} >
                 <div>
                     { predefinedLabelNames[item.name] || item.name }{ item.threadsUnread > 0 && `(${item.threadsUnread})` }
                 </div>
@@ -44,4 +44,4 @@ LabelItem.propTypes = {
     item: PropTypes.object
 };
 
-export default withRouter(LabelItem);
+export default LabelItem;

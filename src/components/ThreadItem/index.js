@@ -1,16 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { NavLink, withRouter } from 'react-router-dom';
+import resolvePathname from 'resolve-pathname';
 import './index.css';
 
 class ThreadItem extends React.Component {
 
     render() {
-        const { item } = this.props;
+        const { item, match: { params: { labelId } } } = this.props;
         const isUnread = item.labelIds.indexOf('UNREAD') !== -1;
         return (
-            <div className="ThreadItem">
-                <div className="ThreadItem__header" style={{ fontWeight: isUnread ? '700' : '300'}} >
+            <NavLink 
+                className="ThreadItem"
+                activeClassName="ThreadItem--active"
+                to={`/dashboard/labels/${labelId}/threads/${item.id}`}
+            >
+                <div className="ThreadItem__header" style={{ fontWeight: isUnread ? '600' : '300'}} >
                     <div>
                         {item.headers.from}
                     </div>
@@ -24,13 +30,18 @@ class ThreadItem extends React.Component {
                 <div 
                     dangerouslySetInnerHTML={{ __html: item.snippet }} 
                 />
-            </div>
+            </NavLink>
         )
     }
 }
 
 ThreadItem.propTypes = {
-    item: PropTypes.object
+    item: PropTypes.object.isRequired,
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            labelId: PropTypes.string.isRequired
+        }).isRequired
+    }).isRequired
 };
 
-export default ThreadItem;
+export default withRouter(ThreadItem);
