@@ -5,7 +5,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import resolvePathname from 'resolve-pathname';
 import './index.css';
 
-class ThreadItem extends React.Component {
+class ThreadItem extends React.PureComponent {
 
     render() {
         const { item, match: { params: { labelId } } } = this.props;

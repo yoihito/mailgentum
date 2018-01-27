@@ -18,7 +18,7 @@ const predefinedLabelNames = {
     '[Imap]/Drafts': 'Drafts',
 }
 
-class LabelItem extends React.Component {
+class LabelItem extends React.PureComponent {
 
     render() {
         const { item } = this.props;

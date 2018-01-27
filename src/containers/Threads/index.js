@@ -13,7 +13,7 @@ import ThreadItemsLoader from 'components/ThreadItemsLoader';
 import Messages from 'containers/Messages';
 import './index.css';
 
-const ShadowedScrollableList = Shadow(Scrollable(EmptyList('There are no conversations with this label.')(EntitiesList)));
+const ScrollableList = Scrollable(EmptyList('There are no conversations with this label.')(EntitiesList));
 
 class Threads extends React.PureComponent {
 
@@ -46,16 +46,16 @@ class Threads extends React.PureComponent {
         const { match: { params: { labelId } } } = this.props;
         const { lastThreadMessages, isLoading, threads } = this.state;
         return (<div className="Threads">
-            {!isLoading && (<div style={{ height: '100%'}}>
-                <ShadowedScrollableList itemContainer={ThreadItem} items={lastThreadMessages}  />
-                <Switch>
+            {!isLoading && [
+                <ScrollableList key="1" itemContainer={ThreadItem} items={lastThreadMessages}  />,
+                <Switch key="2">
                     <Route 
                         path={`/dashboard/labels/${labelId}/threads/:threadId`} 
                         render={(props) => <Messages thread={threads[props.match.params.threadId]} {...props}/>}
                     />
                 </Switch>
-            </div>) }
-            {isLoading && React.createElement(Shadow(ThreadItemsLoader))}
+            ]}
+            {isLoading && <ThreadItemsLoader/>}
         </div>);
     }
 }
@@ -64,4 +64,4 @@ Threads.propTypes = {
     match: PropTypes.object.isRequired
 }
 
-export default Threads;
+export default Shadow(Threads);
