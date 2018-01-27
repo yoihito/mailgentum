@@ -18,7 +18,6 @@ class SessionsNew extends React.Component {
   }
 
   onSuccess(response) {
-    console.log(response);
     this.setState({
       isLoading: false,
       isLoaded: true
@@ -28,7 +27,6 @@ class SessionsNew extends React.Component {
   }
 
   onFailure() {
-    console.log('failure');
     this.setState({
       isLoading: false,
       isLoaded: false,

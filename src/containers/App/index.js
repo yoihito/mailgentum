@@ -44,7 +44,11 @@ class App extends PureComponent {
             path="/sessions/new" 
             render={(props) => {
               if (this.state.isSignedIn) {
-                return <Redirect to={this.state.initialLocation.pathname} />;
+                if (this.state.initialLocation.pathname === '/sessions/new') {
+                  return <Redirect to="/" />;
+                } else {
+                  return <Redirect to={this.state.initialLocation.pathname} />;
+                }
               } else {
                 return <SessionsNew {...props} onSigninSuccess={this.googleSignInSuccess} />
               }
