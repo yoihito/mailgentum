@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { NavLink, withRouter } from 'react-router-dom';
-import resolvePathname from 'resolve-pathname';
 import './index.css';
 
 class ThreadItem extends React.PureComponent {
@@ -24,7 +23,7 @@ class ThreadItem extends React.PureComponent {
                         {moment(item.headers.date).fromNow()}
                     </div>
                 </div>
-                <div style={{ fontWeight: isUnread ? '700' : '300'}} >
+                <div style={{ fontWeight: isUnread ? '600' : '300'}} >
                     { item.headers.subject }
                 </div>
                 <div 
