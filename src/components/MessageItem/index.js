@@ -2,11 +2,13 @@ import React from 'react';
 import parseMessage from 'gmail-api-parse-message';
 
 class MessageItem extends React.PureComponent {
-    render() {
+    componentDidMount() {
         const parsedMessage = parseMessage(this.props.item);
-        console.log(parsedMessage);
-        return (<div dangerouslySetInnerHTML={{ __html: parsedMessage.textHtml }} >
-        </div>);
+        this.iframe.contentWindow.document.write(parsedMessage.textHtml);
+    }   
+    render() {
+        return (<iframe style={{width: '100%', height: '400px', border: 'none'}} ref={(el) => {this.iframe = el} } >
+        </iframe>);
     }
 }
 

@@ -4,14 +4,19 @@ import Shadow from 'components/Shadow';
 import Scrollable from 'components/Scrollable';
 import EntitiesList from 'components/EntitiesList'
 import MessageItem from 'components/MessageItem';
+import './index.css';
 
-const ScrollableList = Scrollable(EntitiesList);
+const ShadowedScrollableList = Shadow(20)(Scrollable(EntitiesList));
 
 class Messages extends React.Component {
 
     render() {
         const { messages } = this.props.thread;
-        return <ScrollableList items={messages} itemContainer={MessageItem} />;
+        return (
+            <div className="Messages">
+                <ShadowedScrollableList items={messages} itemContainer={MessageItem} />
+            </div>
+        );
     }
 }
 
@@ -19,4 +24,4 @@ Messages.propTypes = {
     thread: PropTypes.object.isRequired
 }
 
-export default Shadow(Messages);
+export default Messages;
