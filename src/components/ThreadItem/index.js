@@ -14,7 +14,7 @@ class ThreadItem extends React.PureComponent {
             <NavLink 
                 className="ThreadItem"
                 activeClassName="ThreadItem--active"
-                to={`/dashboard/labels/${labelId}/threads/${item.id}`}
+                to={`/dashboard/labels/${labelId}/threads/${item.threadId}`}
             >
                 <div className="ThreadItem__header" style={{ fontWeight: isUnread ? '600' : '300'}} >
                     <div>
