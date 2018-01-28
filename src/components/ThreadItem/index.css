@@ -1,6 +1,8 @@
 .ThreadItem {
     border-bottom: 1px solid var(--grey-color);
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     font-weight: 300;
     line-height: 24px;
     padding: 12px;
@@ -10,9 +12,7 @@
 .ThreadItem--active.ThreadItem--active.ThreadItem--active {
     background-color: var(--primary-color-1);
     border-left: 3px var(--primary-color-4) solid;
-    color: var(--primary-color-4);
-    font-weight: 600;
-    padding-left: 21px;
+    padding-left: 9px;
 }
 
 .ThreadItem:hover {
@@ -23,5 +23,28 @@
 
 .ThreadItem__header {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+}
+
+.ThreadItem__subject { 
+    position: relative;
+}
+
+.ThreadItem--unread .ThreadItem__subject {
+    font-weight: 600;
+}
+
+/* .ThreadItem--unread .ThreadItem__subject:after {
+    background: var(--primary-color-4);
+    border-radius: 50%;
+    content: '';
+    display: inline-block;
+    height: 12px;
+    position: absolute;
+    width: 12px;
+} */
+
+.ThreadItem--unread.ThreadItem--active .ThreadItem__subject {
+    color: var(--primary-color-4);
 }

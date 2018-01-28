@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import classnames from 'classnames';
 import { NavLink, withRouter } from 'react-router-dom';
 import './index.css';
 
@@ -11,20 +12,23 @@ class ThreadItem extends React.PureComponent {
         const isUnread = item.labelIds.indexOf('UNREAD') !== -1;
         return (
             <NavLink 
-                className="ThreadItem"
+                className={classnames({
+                    ThreadItem: true,
+                    'ThreadItem--unread': isUnread
+                })}
                 activeClassName="ThreadItem--active"
                 to={`/dashboard/labels/${labelId}/threads/${item.threadId}`}
             >
-                <div className="ThreadItem__header" style={{ fontWeight: isUnread ? '600' : '300'}} >
+                <div className="ThreadItem__header">
                     <div>
                         {item.headers.from}
                     </div>
-                    <div>
-                        {moment(item.headers.date).fromNow()}
+                    <div className="ThreadItem__subject" >
+                        { item.headers.subject }
                     </div>
                 </div>
-                <div style={{ fontWeight: isUnread ? '600' : '300'}} >
-                    { item.headers.subject }
+                <div>
+                    {moment(item.headers.date).fromNow()}
                 </div>
             </NavLink>
         )

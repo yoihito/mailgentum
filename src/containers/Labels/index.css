@@ -4,12 +4,13 @@
 }
 
 .Labels__sidebar {
-    display: flex;
-    min-width: 174px;
-    flex-direction: column;
     align-content: flex-start;
     background: var(--white-color);
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    min-width: 174px;
+    overflow: auto;
 }
 
 .Labels__threads {

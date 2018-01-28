@@ -44,7 +44,9 @@ class Labels extends Component {
                             <EntitiesList itemContainer={LabelItem} items={pinnedLabels} />
                             <EntitiesList itemContainer={LabelItem} items={otherLabels} />
                         </div>
-                        <SidebarButton onClick={onSignOut}><i className="fa fa-sign-out"/> Sign out</SidebarButton>
+                        <div>
+                            <SidebarButton fullWidth onClick={onSignOut}><i className="fa fa-sign-out"/> Sign out</SidebarButton>
+                        </div>
                     </div>
                     <div className="Labels__threads">
                         <TransitionGroup>
