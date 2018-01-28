@@ -11,11 +11,11 @@ class Dashboard extends React.Component {
         const { onSignOut } = this.props;
 
         return (<div className="Dashboard">
-            <DashboardAppBar onSignOut={onSignOut} />
+            <DashboardAppBar />
             <div className="Dashboard__content">
                 <Switch>
                     <Redirect exact to="/dashboard/labels/INBOX/" from="/dashboard/labels"/>
-                    <Route path="/dashboard/labels" component={Labels} />
+                    <Route path="/dashboard/labels" component={Labels} onSignOut={onSignOut} />
                     <Redirect to="/dashboard/labels/INBOX/" />
                 </Switch>
             </div>

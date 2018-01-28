@@ -26,9 +26,6 @@ class ThreadItem extends React.PureComponent {
                 <div style={{ fontWeight: isUnread ? '600' : '300'}} >
                     { item.headers.subject }
                 </div>
-                <div 
-                    dangerouslySetInnerHTML={{ __html: item.snippet }} 
-                />
             </NavLink>
         )
     }

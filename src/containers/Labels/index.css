@@ -3,6 +3,14 @@
     height: 100%;
 }
 
+.Labels__sidebar {
+    display: flex;
+    min-width: 174px;
+    flex-direction: column;
+    align-content: flex-start;
+    background: white;
+}
+
 .Labels__threads {
     height: 100%;
     position: relative;

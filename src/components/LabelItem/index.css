@@ -1,5 +1,4 @@
 .LabelItem {
-    border-bottom: 1px solid #ddd;
     display: block;
     font-weight: 300;
     line-height: 24px;
@@ -8,7 +7,7 @@
 }
 
 .LabelItem--active {
-    background-color: #ccc;
+    background-color: var(--primary-color);
 }
 
 .LabelItem--unread {
@@ -16,6 +15,5 @@
 }
 
 .LabelItem:hover {
-    background-color: var(--tint-primary-color);
-    border-bottom: 1px var(--tint-primary-color) solid;
+    background-color: var(--primary-color);
 }
