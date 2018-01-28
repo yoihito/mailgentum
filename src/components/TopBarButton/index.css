@@ -1,4 +1,4 @@
-.FlatButton {
+.TopBarButton {
     background-color: var(--main-bg-color);
     border: none;
     color: var(--white-color);
@@ -8,6 +8,6 @@
     padding: 12px 24px;
 }
 
-.FlatButton:hover {
-    background-color: var(--shade-primary-color);
+.TopBarButton:hover {
+    background-color: var(--primary-color-2);
 }

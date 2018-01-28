@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from 'components/Logo';
+import TopBarButton from 'components/TopBarButton';
 import SearchInput from 'components/SearchInput';
 import './index.css';
 
@@ -10,7 +10,7 @@ class DashboardAppBar extends React.Component {
         return (
             <header className="DashboardAppBar">
                 <div className="DashboardAppBar-left">
-                    <Logo />
+                    <TopBarButton>Compose</TopBarButton>
                     <SearchInput />
                 </div>
             </header>

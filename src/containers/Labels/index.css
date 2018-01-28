@@ -8,7 +8,7 @@
     min-width: 174px;
     flex-direction: column;
     align-content: flex-start;
-    background: white;
+    background: var(--white-color);
 }
 
 .Labels__threads {

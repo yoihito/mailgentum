@@ -1,5 +1,5 @@
 .InitialLoader {
-    color: var(--primary-color);
+    color: var(--primary-color-main);
     font-size: 3em;
     font-weight: 100;
     user-select: none;

@@ -43,12 +43,7 @@ class Labels extends Component {
                     <div className="Labels__sidebar" >
                         <EntitiesList itemContainer={LabelItem} items={pinnedLabels} />
                         <EntitiesList itemContainer={LabelItem} items={otherLabels} />
-                        <FlatButton onClick={this.props.onSignOut} >
-                            <DefaultScreen>
-                                <span className="SignOut">Sign out</span>
-                            </DefaultScreen>
-                            <i className="fa fa-sign-out" />
-                        </FlatButton>
+                        <div>Sign out</div>
                     </div>
                     <div className="Labels__threads">
                         <TransitionGroup>
