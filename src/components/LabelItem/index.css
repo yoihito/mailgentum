@@ -13,9 +13,6 @@
     padding-left: 21px;
 }
 
-.LabelItem--unread {
-}
-
 .LabelItem:hover {
     background-color: var(--grey-color);
 }

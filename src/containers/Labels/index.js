@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, matchPath } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import FlatButton from 'components/FlatButton';
-import { DefaultScreen } from 'components/Responsive';
+import SidebarButton from 'components/SidebarButton';
 import EntitiesList from 'components/EntitiesList';
 import Threads from 'containers/Threads';
 import LabelsService from 'apis/LabelsService';
@@ -34,16 +33,18 @@ class Labels extends Component {
     }
 
     render() {
-        const { location } = this.props;
+        const { location, onSignOut } = this.props;
         const { pinnedLabels, otherLabels, isLoaded } = this.state;
         const match = matchPath(location.pathname, { path: '/dashboard/labels/:labelId/'});
         if (isLoaded) {
             return (
                 <div className="Labels">
                     <div className="Labels__sidebar" >
-                        <EntitiesList itemContainer={LabelItem} items={pinnedLabels} />
-                        <EntitiesList itemContainer={LabelItem} items={otherLabels} />
-                        <div>Sign out</div>
+                        <div>
+                            <EntitiesList itemContainer={LabelItem} items={pinnedLabels} />
+                            <EntitiesList itemContainer={LabelItem} items={otherLabels} />
+                        </div>
+                        <SidebarButton onClick={onSignOut}><i className="fa fa-sign-out"/> Sign out</SidebarButton>
                     </div>
                     <div className="Labels__threads">
                         <TransitionGroup>
@@ -70,7 +71,8 @@ class Labels extends Component {
 }
 
 Labels.propTypes = {
-    location: PropTypes.object.isRequired
+    location: PropTypes.object.isRequired,
+    onSignOut: PropTypes.func.isRequired,
 };
 
 export default Labels;

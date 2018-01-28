@@ -9,6 +9,7 @@
     flex-direction: column;
     align-content: flex-start;
     background: var(--white-color);
+    justify-content: space-between;
 }
 
 .Labels__threads {
