@@ -22,14 +22,14 @@ class ThreadItem extends React.PureComponent {
                 to={`/dashboard/labels/${labelId}/threads/${item.threadId}`}
             >
                 <div className="ThreadItem__header">
-                    <div>
+                    <div className="ThreadItem__contributors">
                         {parsedFromHeader.name || parsedFromHeader.address}
                     </div>
                     <div className="ThreadItem__subject" >
                         { item.headers.subject }
                     </div>
                 </div>
-                <div>
+                <div className="ThreadItem__date">
                     {moment(item.headers.date).fromNow()}
                 </div>
             </NavLink>

@@ -21,14 +21,30 @@
     cursor: pointer;
 }
 
+.ThreadItem__date {
+    font-size: 1em;
+    white-space: nowrap;
+}
+
 .ThreadItem__header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.ThreadItem__contributors {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .ThreadItem__subject { 
     position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .ThreadItem--unread .ThreadItem__subject {
