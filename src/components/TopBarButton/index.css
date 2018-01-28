@@ -1,13 +1,18 @@
 .TopBarButton {
-    background-color: var(--main-bg-color);
+    background-color: var(--primary-color-4);
     border: none;
     color: var(--white-color);
     font-size: 18px;
     font-weight: 300;
-    height: 48px;
-    padding: 12px 24px;
+    height: 38px;
+    padding: 0 12px;
 }
 
 .TopBarButton:hover {
-    background-color: var(--primary-color-2);
+    background-color: var(--primary-color-3);
+    cursor: pointer;
+}
+
+.TopBarButton:focus {
+    outline: none;
 }

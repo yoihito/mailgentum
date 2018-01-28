@@ -16,7 +16,7 @@
     flex-grow: 1;
     font-size: 18px;
     font-weight: 300;
-    height: 36px;
+    height: 38px;
     padding: 0 12px;
     width: 100%;
 }
@@ -40,9 +40,9 @@
     display: flex;
     font-size: 16px;
     font-weight: 300;
-    height: 36px;
+    height: 38px;
     justify-content: center;
-    width: 36px;
+    width: 38px;
 }
 
 .SearchInput-icon:hover {

@@ -3,16 +3,17 @@
     font-weight: 300;
     line-height: 24px;
     padding: 12px 24px;
-    text-align: center;
 }
 
-.LabelItem--active {
-    border-left: 3px var(--primary-color-1) solid;
-    padding-left: 9px;
+.LabelItem--active.LabelItem--active.LabelItem--active {
+    background-color: var(--primary-color-1);
+    border-left: 3px var(--primary-color-4) solid;
+    color: var(--primary-color-4);
+    font-weight: 600;
+    padding-left: 21px;
 }
 
 .LabelItem--unread {
-    font-weight: 600;
 }
 
 .LabelItem:hover {

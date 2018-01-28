@@ -10,7 +10,7 @@ class DashboardAppBar extends React.Component {
         return (
             <header className="DashboardAppBar">
                 <div className="DashboardAppBar-left">
-                    <TopBarButton>Compose</TopBarButton>
+                    <TopBarButton><i className="fa fa-paper-plane" /> compose</TopBarButton>
                     <SearchInput />
                 </div>
             </header>
