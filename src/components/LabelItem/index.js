@@ -33,8 +33,11 @@ class LabelItem extends React.PureComponent {
                 )}
                 to={`/dashboard/labels/${item.id}/`} >
                 <div>
-                    { predefinedLabelNames[item.name] || item.name }{ item.threadsUnread > 0 && `(${item.threadsUnread})` }
+                    { predefinedLabelNames[item.name] || item.name }
                 </div>
+                <div className="LabelItem__unread-indicator">
+                    {item.threadsUnread}
+                </div >
             </NavLink>
         )
     }

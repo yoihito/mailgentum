@@ -1,8 +1,9 @@
 .LabelItem {
-    display: block;
-    font-weight: 300;
+    display: flex;
     line-height: 24px;
     padding: 12px 24px;
+    justify-content: space-between;
+    color: var(--primary-color-3);
 }
 
 .LabelItem--active.LabelItem--active.LabelItem--active {
@@ -15,4 +16,26 @@
 
 .LabelItem:hover {
     background-color: var(--grey-color);
+}
+
+.LabelItem__unread-indicator {
+    display: none;
+}
+
+.LabelItem--unread > .LabelItem__unread-indicator {
+    display: block;
+    border-radius: 11px;
+    padding: 0 8px;
+    height: 22px;
+    line-height: 22px;
+    background: var(--primary-color-1);
+}
+
+.LabelItem--unread.LabelItem--active > .LabelItem__unread-indicator {
+    display: block;
+    border-radius: 11px;
+    padding: 0 8px;
+    height: 22px;
+    line-height: 22px;
+    background: var(--primary-color-2);
 }
