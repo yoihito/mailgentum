@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import classnames from 'classnames';
 import { NavLink, withRouter } from 'react-router-dom';
+import emailAddresses from 'email-addresses';
 import './index.css';
 
 class ThreadItem extends React.PureComponent {
@@ -10,6 +11,7 @@ class ThreadItem extends React.PureComponent {
     render() {
         const { item, match: { params: { labelId } } } = this.props;
         const isUnread = item.labelIds.indexOf('UNREAD') !== -1;
+        const parsedFromHeader = emailAddresses.parseOneAddress(item.headers.from);
         return (
             <NavLink 
                 className={classnames({
@@ -21,7 +23,7 @@ class ThreadItem extends React.PureComponent {
             >
                 <div className="ThreadItem__header">
                     <div>
-                        {item.headers.from}
+                        {parsedFromHeader.name || parsedFromHeader.address}
                     </div>
                     <div className="ThreadItem__subject" >
                         { item.headers.subject }
