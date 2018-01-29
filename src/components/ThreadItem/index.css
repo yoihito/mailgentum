@@ -27,13 +27,10 @@
 }
 
 .ThreadItem__header {
-    display: flex;
-    flex-direction: column;
+    display: block;
     flex-grow: 1;
     flex-shrink: 1;
-    justify-content: space-between;
     overflow: hidden;
-    position: relative;
 }
 
 .ThreadItem__contributors {
@@ -53,10 +50,17 @@
 }
 
 .ThreadItem--unread .ThreadItem__unread-indicator {
+    align-items: center;
+    display: flex;
+    float: right;
+    height: 100%;
+    padding: 0 10px;
+}
+
+.ThreadItem--unread .ThreadItem__unread-indicator:before {
     background: var(--primary-color-4);
     border-radius: 50%;
     content: '';
-    display: inline-block;
     height: 12px;
     width: 12px;
 } 

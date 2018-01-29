@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import classnames from 'classnames';
 import { NavLink, withRouter } from 'react-router-dom';
 import emailAddresses from 'email-addresses';
+import Date from 'components/Date';
 import './index.css';
 
 class ThreadItem extends React.PureComponent {
@@ -22,6 +22,7 @@ class ThreadItem extends React.PureComponent {
                 to={`/dashboard/labels/${labelId}/threads/${item.threadId}`}
             >
                 <div className="ThreadItem__header">
+                    <div className="ThreadItem__unread-indicator"/>
                     <div className="ThreadItem__contributors">
                         {parsedFromHeader.name || parsedFromHeader.address}
                     </div>
@@ -30,11 +31,7 @@ class ThreadItem extends React.PureComponent {
                     </div>
                 </div>
                 <div className="ThreadItem__date">
-                    { 
-                        moment().isSame(item.headers.date, 'day') ? 
-                            moment(item.headers.date).format('LT') : 
-                            moment(item.headers.date).format('L')
-                    }
+                    <Date date={item.headers.date}/>
                 </div>
             </NavLink>
         )
