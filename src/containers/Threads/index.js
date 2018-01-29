@@ -47,13 +47,18 @@ class Threads extends React.PureComponent {
         const { lastThreadMessages, isLoading, threads } = this.state;
         return (<div className="Threads">
             {!isLoading && [
-                <ScrollableList key="1" itemContainer={ThreadItem} items={lastThreadMessages}  />,
-                <Switch key="2">
+                (<ScrollableList 
+                    key="1" 
+                    itemContainer={ThreadItem} 
+                    items={lastThreadMessages}
+                    scrollableStyle={{ flexGrow: 1 }}
+                />),
+                (<Switch key="2">
                     <Route 
                         path={`/dashboard/labels/${labelId}/threads/:threadId`} 
                         render={(props) => <Messages thread={threads[props.match.params.threadId]} {...props}/>}
                     />
-                </Switch>
+                </Switch>)
             ]}
             {isLoading && <ThreadItemsLoader/>}
         </div>);
