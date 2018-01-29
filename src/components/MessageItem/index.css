@@ -1,0 +1,31 @@
+.MessageItem {
+    padding: 10px;
+    border: 1px solid var(--primary-color-main);
+    margin: 10px 10px 0;
+}
+
+.MessageCollapsedHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.MessageCollapsedHeader__content {
+    overflow: hidden;
+}
+
+.MessageCollapsedHeader__from {
+    float: left;
+    white-space: nowrap;
+    margin-right: 15px;
+}
+
+.MessageCollapsedHeader__snippet {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.MessageCollapsedHeader__date {
+    white-space: nowrap;
+}

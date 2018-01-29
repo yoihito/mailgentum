@@ -12,6 +12,7 @@
     "moment": "^2.20.1",
     "react": "^16.2.0",
     "react-animations": "^1.0.0",
+    "react-collapsible": "^2.0.4",
     "react-content-loader": "^3.0.1",
     "react-dom": "^16.2.0",
     "react-google-login": "^3.0.4",
