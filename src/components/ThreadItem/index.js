@@ -30,7 +30,11 @@ class ThreadItem extends React.PureComponent {
                     </div>
                 </div>
                 <div className="ThreadItem__date">
-                    {moment(item.headers.date).fromNow()}
+                    { 
+                        moment().isSame(item.headers.date, 'day') ? 
+                            moment(item.headers.date).format('LT') : 
+                            moment(item.headers.date).format('L')
+                    }
                 </div>
             </NavLink>
         )
