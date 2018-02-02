@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 
 const EntitiesList = ({ itemContainer, items }) => {
     if (items) {
-        return (<div>
-            {
-                items.map((item) => React.createElement(itemContainer, { item, key: item.id }))
-            }
-            </div>);
+        return items.map((item) => React.createElement(itemContainer, { item, key: item.id }));
     } else {
         return null;
     }

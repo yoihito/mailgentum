@@ -1,7 +1,7 @@
 import emailAddresses from 'email-addresses';
 
-const RecipientName = ({ from }) => {
-    const parsedFromHeader = emailAddresses.parseOneAddress(from);
+const RecipientName = ({ address }) => {
+    const parsedFromHeader = emailAddresses.parseOneAddress(address);
     return parsedFromHeader.name || parsedFromHeader.address;
 }
 

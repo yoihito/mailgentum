@@ -5,6 +5,7 @@
 
 .Dashboard__content {
     height: 100%;
+    background: var(--white-color);
 }
 
 

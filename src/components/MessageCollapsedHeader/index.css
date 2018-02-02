@@ -1,0 +1,34 @@
+.MessageCollapsedHeader {
+    background: var(--white-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.MessageCollapsedHeader:hover {
+    background: var(--grey-color);
+    cursor: pointer;
+}
+
+.MessageCollapsedHeader__content {
+    overflow: hidden;
+}
+
+.MessageCollapsedHeader__from {
+    float: left;
+    font-weight: 600;
+    margin-right: 15px;
+    white-space: nowrap;
+}
+
+.MessageCollapsedHeader__snippet {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--grey-color-1);
+}
+
+.MessageCollapsedHeader__date {
+    white-space: nowrap;
+}

@@ -12,7 +12,8 @@ class EmailIframe extends React.Component {
 
     componentDidMount() {
         this.iframe.contentWindow.document.write(this.props.content);
-        this.setIframeHeight();
+        this.iframe.contentWindow.document.close();
+        setTimeout(() => this.setIframeHeight(), 500);
     }
 
     getIframeContentHeight(iframe) {

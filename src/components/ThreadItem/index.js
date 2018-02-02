@@ -23,7 +23,7 @@ class ThreadItem extends React.PureComponent {
                 <div className="ThreadItem__header">
                     <div className="ThreadItem__unread-indicator"/>
                     <div className="ThreadItem__contributors">
-                        <RecipientName from={item.headers.from}/>
+                        <RecipientName address={item.headers.from}/>
                     </div>
                     <div className="ThreadItem__subject" >
                         { item.headers.subject }

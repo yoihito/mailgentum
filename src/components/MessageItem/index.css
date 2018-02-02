@@ -1,31 +1,56 @@
 .MessageItem {
-    padding: 10px;
-    border: 1px solid var(--primary-color-main);
-    margin: 10px 10px 0;
+    border-bottom: 1px solid var(--grey-color);
 }
 
-.MessageCollapsedHeader {
+.MessageItem:last-child {
+    border-bottom: none;
+}
+
+.MessageItem__actions {
     display: flex;
-    flex-direction: row;
+    color: var(--primary-color-1);
+}
+
+.MessageItem__actions:before {
+    background: var(--grey-color);
+    content: ' ';
+    display: block;
+    flex-grow: 1;
+    height: 2px;
+    margin: auto 16px auto 0;
+}
+
+.MessageItem__actions:after {
+    background: var(--grey-color);
+    content: ' ';
+    display: block;
+    flex-grow: 1;
+    height: 2px;
+    margin: auto 0 auto 16px;
+}
+
+.MessageItem__actionItem {
+    padding: 0 8px 4px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+
+.MessageItem__actionItem:hover {
+    color: var(--primary-color-main);
+    border-bottom: 2px solid var(--primary-color-main);
+}
+
+.MessageHeader {
+    display: flex;
     justify-content: space-between;
+    padding: 10px 20px;
 }
 
-.MessageCollapsedHeader__content {
-    overflow: hidden;
+.MessageHeader__from {
+    font-weight: 600;
 }
 
-.MessageCollapsedHeader__from {
-    float: left;
-    white-space: nowrap;
-    margin-right: 15px;
-}
-
-.MessageCollapsedHeader__snippet {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.MessageCollapsedHeader__date {
-    white-space: nowrap;
+.Collapsible__contentOuter {
+    padding-left: 20px;
+    padding-right: 20px;
 }
