@@ -2,17 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DashboardAppBar from 'containers/DashboardAppBar'
 import { Route, Switch, Redirect } from 'react-router-dom';
+import styled from 'styled-components';
 import Labels from 'containers/Labels';
-import './index.css';
+
+const DashboardContent = styled.div`
+    height: 100%;
+    background: var(--white-color);
+`
 
 class Dashboard extends React.Component {
 
     render() {
-        const { onSignOut } = this.props;
+        const { onSignOut, className } = this.props;
 
-        return (<div className="Dashboard">
+        return (<div className={className}>
             <DashboardAppBar />
-            <div className="Dashboard__content">
+            <DashboardContent>
                 <Switch>
                     <Redirect exact to="/dashboard/labels/INBOX/" from="/dashboard/labels"/>
                     <Route 
@@ -24,14 +29,20 @@ class Dashboard extends React.Component {
                     />
                     <Redirect to="/dashboard/labels/INBOX/" />
                 </Switch>
-            </div>
+            </DashboardContent>
         </div>);
     }
 
 }
 
 Dashboard.propTypes = {
-    onSignOut: PropTypes.func.isRequired
-}
+    onSignOut: PropTypes.func.isRequired,
+    className: PropTypes.string.isRequired,
+};
 
-export default Dashboard;
+const StyledDashboard = styled(Dashboard)`
+    height: 100%;
+    padding-top: 72px;
+`;
+
+export default StyledDashboard;

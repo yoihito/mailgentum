@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, Route, Redirect, Switch } from 'react-router-dom';
+import styled from 'styled-components';
 import SessionsNew from 'containers/SessionsNew';
 import Dashboard from 'containers/Dashboard';
-import './App.css';
 
 const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest"];
 
@@ -37,7 +37,7 @@ class App extends PureComponent {
 
   render() {
     return (
-      <div className="App">
+      <div className={this.props.className}>
         <Switch>
           <Route 
             path="/sessions/new" 
@@ -70,7 +70,12 @@ class App extends PureComponent {
 App.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
-  })
+  }),
+  className: PropTypes.string.isRequired
 };
 
-export default withRouter(App);
+const StyledApp = styled(App)`
+  height: 100%;
+`;
+
+export default withRouter(StyledApp);
