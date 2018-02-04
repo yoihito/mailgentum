@@ -31,7 +31,7 @@ class LabelItem extends React.PureComponent {
                         'LabelItem--unread': item.threadsUnread > 0
                     }
                 )}
-                to={`/dashboard/labels/${item.id}/`} >
+                to={`/labels/${item.id}/`} >
                 <div>
                     { predefinedLabelNames[item.name] || item.name }
                 </div>

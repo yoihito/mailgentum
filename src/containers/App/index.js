@@ -53,14 +53,13 @@ class App extends PureComponent {
               }
             }} 
           />
-          <Route path="/dashboard" render={(props) => {
+          <Route path="/" render={(props) => {
             if (this.state.isSignedIn) {
               return <Dashboard onSignOut={this.googleSignOut} />;
             } else {
               return <Redirect to="/sessions/new" />;
             }
           }} />
-          <Redirect to="/dashboard" />
         </Switch>
       </div>
     );

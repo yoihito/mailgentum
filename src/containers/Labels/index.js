@@ -35,7 +35,7 @@ class Labels extends Component {
     render() {
         const { location, onSignOut } = this.props;
         const { pinnedLabels, otherLabels, isLoaded } = this.state;
-        const match = matchPath(location.pathname, { path: '/dashboard/labels/:labelId/'});
+        const match = matchPath(location.pathname, { path: '/labels/:labelId/'});
         if (isLoaded) {
             return (
                 <div className="Labels">
@@ -59,7 +59,7 @@ class Labels extends Component {
                             >
                                 <div className="Labels__switch-container">
                                     <Switch>
-                                        <Route path="/dashboard/labels/:labelId" component={Threads} />
+                                        <Route path="/labels/:labelId" component={Threads} />
                                     </Switch>
                                 </div>
                             </CSSTransition>

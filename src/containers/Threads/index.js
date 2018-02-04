@@ -55,7 +55,7 @@ class Threads extends React.PureComponent {
                 />),
                 (<Switch key="2">
                     <Route 
-                        path={`/dashboard/labels/${labelId}/threads/:threadId`} 
+                        path={`/labels/${labelId}/threads/:threadId`}
                         render={(props) => <Messages thread={threads[props.match.params.threadId]} {...props}/>}
                     />
                 </Switch>)

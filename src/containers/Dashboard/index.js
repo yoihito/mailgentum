@@ -4,6 +4,7 @@ import DashboardAppBar from 'containers/DashboardAppBar'
 import { Route, Switch, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Labels from 'containers/Labels';
+import Compose from 'containers/Compose';
 
 const DashboardContent = styled.div`
     height: 100%;
@@ -19,15 +20,16 @@ class Dashboard extends React.Component {
             <DashboardAppBar />
             <DashboardContent>
                 <Switch>
-                    <Redirect exact to="/dashboard/labels/INBOX/" from="/dashboard/labels"/>
+                    <Redirect exact to="/labels/INBOX/" from="/labels"/>
                     <Route 
                         key="labels"
-                        path="/dashboard/labels" 
+                        path="/labels"
                         render={(props) => (
                             <Labels key="labels" {...props} onSignOut={onSignOut} />
                         )}  
                     />
-                    <Redirect to="/dashboard/labels/INBOX/" />
+                    <Route path="/compose" component={Compose} />
+                    <Redirect to="/labels/INBOX/" />
                 </Switch>
             </DashboardContent>
         </div>);

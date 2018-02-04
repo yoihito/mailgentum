@@ -18,7 +18,7 @@ class ThreadItem extends React.PureComponent {
                     'ThreadItem--unread': isUnread
                 })}
                 activeClassName="ThreadItem--active"
-                to={`/dashboard/labels/${labelId}/threads/${item.threadId}`}
+                to={`/labels/${labelId}/threads/${item.threadId}`}
             >
                 <div className="ThreadItem__header">
                     <div className="ThreadItem__unread-indicator"/>
