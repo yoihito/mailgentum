@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './index.css';
 
-const Shadow = (style) => {
-    if ( Object.getPrototypeOf(style).prototype && Object.getPrototypeOf(style).prototype.isReactComponent ){
-        const Component = style;
-        return (props) => (<div className="Shadow"><Component {...props}/></div>);
-    }
-    return (Component) => (props) => (<div style={style} className="Shadow"><Component {...props}/></div>)
+const Shadow = (Component) => {
+    const wrappedComponent = ({ className, ...props }) => (<Component className={`${className} Shadow`} {...props}/>)
+    wrappedComponent.propTypes = {
+        className: PropTypes.string,
+    };
+
+    return wrappedComponent;
 }
 
 export default Shadow;

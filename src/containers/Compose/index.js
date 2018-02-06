@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Shadow from 'components/Shadow';
 import styled from 'styled-components';
 
@@ -6,7 +7,7 @@ class Compose extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={this.props.className}>
                 Compose
             </div>
         );
@@ -15,7 +16,12 @@ class Compose extends React.Component {
 }
 
 Compose.propTypes = {
-
+    className: PropTypes.string.isRequired
 };
 
-export default Shadow(Compose);
+const StyledCompose = styled(Compose)`
+    background-color: var(--white-color);
+    display: flex;
+`;
+
+export default Shadow(StyledCompose);

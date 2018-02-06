@@ -1,7 +1,4 @@
 .Threads {
-    background-color: var(--white-color);;
+    background-color: var(--white-color);
     display: flex;
-    height: 100%;
-    position: absolute;
-    width: 100%;
 }

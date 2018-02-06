@@ -43,9 +43,9 @@ class Threads extends React.PureComponent {
     }
 
     render() {
-        const { match: { params: { labelId } } } = this.props;
+        const { className, match: { params: { labelId } } } = this.props;
         const { lastThreadMessages, isLoading, threads } = this.state;
-        return (<div className="Threads">
+        return (<div className={`Threads ${className}`}>
             {!isLoading && [
                 (<ScrollableList 
                     key="1" 
@@ -66,6 +66,7 @@ class Threads extends React.PureComponent {
 }
 
 Threads.propTypes = {
+    className: PropTypes.string.isRequired,
     match: PropTypes.object.isRequired
 }
 
