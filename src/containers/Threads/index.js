@@ -12,7 +12,6 @@ import ThreadItem from 'components/ThreadItem';
 import EntitiesList from 'components/EntitiesList';
 import ThreadItemsLoader from 'components/ThreadItemsLoader';
 import Messages from 'containers/Messages';
-import './index.css';
 
 const ScrollableList = styled(Scrollable(EmptyList('There are no conversations with this label.')(EntitiesList)))`
     flex-grow: 1;
@@ -48,7 +47,7 @@ class Threads extends React.PureComponent {
     render() {
         const { className, match: { params: { labelId } } } = this.props;
         const { lastThreadMessages, isLoading, threads } = this.state;
-        return (<div className={`Threads ${className}`}>
+        return (<div className={className}>
             {!isLoading && [
                 (<ScrollableList 
                     key="1" 
@@ -72,4 +71,10 @@ Threads.propTypes = {
     match: PropTypes.object.isRequired
 }
 
-export default Shadow(Threads);
+const StyledThreads = styled(Shadow(Threads))`
+    background-color: var(--white-color);
+    display: flex;
+    flex-grow: 1;
+`;
+
+export default StyledThreads;

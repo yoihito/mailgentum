@@ -7,21 +7,18 @@ import Scrollable from 'components/Scrollable';
 import EntitiesList from 'components/EntitiesList'
 import MessageItem from 'components/MessageItem';
 
-import './index.css';
-
 const ShadowedScrollableList = styled(Scrollable(Shadow(EntitiesList)))`
     margin: 10px;
 `;
 
-
 class Messages extends React.Component {
 
     render() {
-        const { messages } = this.props.thread;
+        const { className, thread: { messages } } = this.props;
         const parsedMessages = messages.map(message => parseMessage(message));
         parsedMessages[parsedMessages.length - 1].unfolded = true;
         return (
-            <div className="Messages">
+            <div className={className}>
                 <ShadowedScrollableList items={parsedMessages} itemContainer={MessageItem} />
             </div>
         );
@@ -29,7 +26,14 @@ class Messages extends React.Component {
 }
 
 Messages.propTypes = {
+    className: PropTypes.string.isRequired,
     thread: PropTypes.object.isRequired
 }
 
-export default Messages;
+const StyledMessages = styled(Messages)`
+    min-width: 70%;
+    background: var(--primary-color-1);
+    overflow: auto;
+`
+
+export default StyledMessages;
