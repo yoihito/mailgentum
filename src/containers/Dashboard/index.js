@@ -4,7 +4,6 @@ import DashboardAppBar from 'containers/DashboardAppBar'
 import { Route, Switch, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Labels from 'containers/Labels';
-import Compose from 'containers/Compose';
 
 const DashboardContent = styled.div`
     height: 100%;
@@ -28,7 +27,6 @@ class Dashboard extends React.Component {
                             <Labels key="labels" {...props} onSignOut={onSignOut} />
                         )}  
                     />
-                    <Route path="/compose" component={Compose} />
                     <Redirect to="/labels/INBOX/" />
                 </Switch>
             </DashboardContent>

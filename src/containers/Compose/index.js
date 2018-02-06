@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import styled from 'styled-components';
 
 class Compose extends React.Component {
 
     render() {
-        return <div />;        
+        return (
+            <div>
+                Compose
+            </div>
+        );
     }
 
 }
 
-export default Compose
+Compose.propTypes = {
+
+};
+
+export default Compose;

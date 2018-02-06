@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, matchPath } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import LabelsService from 'apis/LabelsService';
 import SidebarButton from 'components/SidebarButton';
 import EntitiesList from 'components/EntitiesList';
-import Threads from 'containers/Threads';
-import LabelsService from 'apis/LabelsService';
 import LabelItem from 'components/LabelItem';
+import Threads from 'containers/Threads';
+import Compose from 'containers/Compose';
 import './index.css';
 
 const PinnedLabels = ['INBOX', 'IMPORTANT', 'STARRED', 'SENT', 'DRAFT', 'SPAM', 'TRASH'];
@@ -59,6 +60,7 @@ class Labels extends Component {
                             >
                                 <div className="Labels__switch-container">
                                     <Switch>
+                                        <Route path="/labels/compose" component={Compose} />
                                         <Route path="/labels/:labelId" component={Threads} />
                                     </Switch>
                                 </div>
