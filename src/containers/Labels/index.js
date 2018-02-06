@@ -59,7 +59,7 @@ class Labels extends Component {
                                 unmountOnExit={true}
                             >
                                 <div className="Labels__switch-container">
-                                    <Switch>
+                                    <Switch location={location}>
                                         <Route path="/labels/compose" component={Compose} />
                                         <Route path="/labels/:labelId" component={Threads} />
                                     </Switch>

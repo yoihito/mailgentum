@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Shadow from 'components/Shadow';
 import styled from 'styled-components';
 
 class Compose extends React.Component {
@@ -17,4 +18,4 @@ Compose.propTypes = {
 
 };
 
-export default Compose;
+export default Shadow(Compose);
