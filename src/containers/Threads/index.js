@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import parseMessage from 'gmail-api-parse-message';
 import { Switch, Route } from 'react-router-dom';
+import styled from 'styled-components';
 import delay from 'utils/delay';
 import ThreadsService from 'apis/ThreadsService';
 import Shadow from 'components/Shadow';
@@ -13,7 +14,9 @@ import ThreadItemsLoader from 'components/ThreadItemsLoader';
 import Messages from 'containers/Messages';
 import './index.css';
 
-const ScrollableList = Scrollable(EmptyList('There are no conversations with this label.')(EntitiesList));
+const ScrollableList = styled(Scrollable(EmptyList('There are no conversations with this label.')(EntitiesList)))`
+    flex-grow: 1;
+`;
 
 class Threads extends React.PureComponent {
 
@@ -51,7 +54,6 @@ class Threads extends React.PureComponent {
                     key="1" 
                     itemContainer={ThreadItem} 
                     items={lastThreadMessages}
-                    scrollableStyle={{ flexGrow: 1 }}
                 />),
                 (<Switch key="2">
                     <Route 
