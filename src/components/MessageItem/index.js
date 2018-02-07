@@ -25,7 +25,6 @@ const MessageHeader = ({date, from, to}) => {
 class MessageItem extends React.PureComponent {
     render() {
         const { item } = this.props;
-        console.log(item);
         return (<div className="MessageItem">
             <Collapsible 
                 transitionTime={200}

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import parseMessage from 'gmail-api-parse-message';
 import styled from 'styled-components';
 import Shadow from 'components/Shadow';
 import Scrollable from 'components/Scrollable';
@@ -15,12 +14,10 @@ class Messages extends React.Component {
 
     render() {
         const { className, thread: { messages } } = this.props;
-        console.log(messages);
-        const parsedMessages = messages.map(message => parseMessage(message));
-        parsedMessages[parsedMessages.length - 1].unfolded = true;
+        messages[messages.length - 1].unfolded = true;
         return (
             <div className={className}>
-                <ShadowedScrollableList items={parsedMessages} itemContainer={MessageItem} />
+                <ShadowedScrollableList items={messages} itemContainer={MessageItem} />
             </div>
         );
     }

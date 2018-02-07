@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import parseMessage from 'gmail-api-parse-message';
 import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import delay from 'utils/delay';
@@ -32,7 +31,7 @@ class Threads extends React.PureComponent {
         const threadsService = new ThreadsService();
         await delay(500);
         let threads = await threadsService.listDetailedThreads({ labelIds: labelId });
-        const lastThreadMessages = threads.map((thread) => parseMessage(thread.messages[thread.messages.length - 1]));
+        const lastThreadMessages = threads.map((thread) => thread.messages[thread.messages.length - 1]);
         const threadsMap = threads.reduce((acc, thread) => {
             acc[thread.id] = thread; 
             return acc;

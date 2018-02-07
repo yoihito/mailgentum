@@ -1,3 +1,4 @@
+import parseMessage from 'gmail-api-parse-message';
 import BaseService from './BaseService';
 
 export default class ThreadsService extends BaseService {
@@ -16,9 +17,13 @@ export default class ThreadsService extends BaseService {
         const { result: { threads, resultSizeEstimate } } = await this.listThreads({ userId, maxResults, labelIds });
         if (resultSizeEstimate > 0) {
             const threadsRequests = threads.map(thread => this.getThread({ threadId: thread.id }));
-            let response = await this.executeBatch(threadsRequests);
-            console.log(response);
-            return Object.values(response.result).map(threadResponse => threadResponse.result);
+            const response = await this.executeBatch(threadsRequests);
+            return Object.values(response.result).map(threadResponse => {
+                return {
+                    ...threadResponse.result,
+                    messages: threadResponse.result.messages.map(message => parseMessage(message))
+                };
+            });
         } else {
             return [];
         }
