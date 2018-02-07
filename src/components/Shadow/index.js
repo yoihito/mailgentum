@@ -1,14 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './index.css';
+import styled from 'styled-components';
 
 const Shadow = (Component) => {
-    const wrappedComponent = ({ className, ...props }) => (<Component className={`${className} Shadow`} {...props}/>)
-    wrappedComponent.propTypes = {
-        className: PropTypes.string,
-    };
-
-    return wrappedComponent;
+    const styledComponent = styled(Component)`
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px;
+    `
+    return styledComponent;
 }
 
 export default Shadow;

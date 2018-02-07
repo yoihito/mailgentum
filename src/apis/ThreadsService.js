@@ -1,10 +1,10 @@
 import BaseService from './BaseService';
 
-export default class ThreadsService extends BaseService{
+export default class ThreadsService extends BaseService {
 
-    getThread({ userId= 'me', threadId: id }) {
+    getThread({ userId= 'me', threadId: id, format = 'full' }) {
         return window.gapi.client.gmail.users.threads
-            .get({ id, userId })
+            .get({ id, userId, format })
     }
 
     listThreads({ userId = 'me', maxResults = 25, labelIds }) {
@@ -17,6 +17,7 @@ export default class ThreadsService extends BaseService{
         if (resultSizeEstimate > 0) {
             const threadsRequests = threads.map(thread => this.getThread({ threadId: thread.id }));
             let response = await this.executeBatch(threadsRequests);
+            console.log(response);
             return Object.values(response.result).map(threadResponse => threadResponse.result);
         } else {
             return [];

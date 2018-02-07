@@ -1,14 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './index.css';
+import styled from 'styled-components';
 
 const Scrollable = (Component) => {
-    const wrappedComponent = ({ className, ...props }) => (<Component className={`${className} Scrollable`} {...props}/>)
-    wrappedComponent.propTypes = {
-        className: PropTypes.string,
-    };
-
-    return wrappedComponent;
+    const styledComponent = styled(Component)`
+        overflow: auto;
+    `;
+    return styledComponent;
 }
 
 export default Scrollable;

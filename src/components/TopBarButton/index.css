@@ -1,11 +1,12 @@
 .TopBarButton {
-    background-color: var(--primary-color-4);
+    background-color: var(--primary-color-2);
     border: none;
     color: var(--white-color);
     font-size: 18px;
     font-weight: 300;
     height: 38px;
     padding: 0 12px;
+    transition: all 0.2s ease-in-out;
 }
 
 .TopBarButton:hover {

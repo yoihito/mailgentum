@@ -15,6 +15,7 @@ class Messages extends React.Component {
 
     render() {
         const { className, thread: { messages } } = this.props;
+        console.log(messages);
         const parsedMessages = messages.map(message => parseMessage(message));
         parsedMessages[parsedMessages.length - 1].unfolded = true;
         return (
