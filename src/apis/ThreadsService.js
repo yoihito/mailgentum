@@ -13,6 +13,15 @@ export default class ThreadsService extends BaseService {
             .list({userId, maxResults, labelIds: labelIds })
     }
 
+    modifyThread({ userId = 'me', threadId: id, addLabelIds = [], removeLabelIds = [] }) {
+        return window.gapi.client.gmail.users.threads.modify({
+            userId,
+            id,
+            addLabelIds,
+            removeLabelIds,
+        });
+    }
+
     async listDetailedThreads({ userId = 'me', maxResults = 25, labelIds }) {
         const { result: { threads, resultSizeEstimate } } = await this.listThreads({ userId, maxResults, labelIds });
         if (resultSizeEstimate > 0) {
@@ -27,6 +36,20 @@ export default class ThreadsService extends BaseService {
         } else {
             return [];
         }
+    }
+
+    async markThreadAsRead({ userId = 'me', threadId }) {
+        const response = await this.modifyThread({ userId, threadId, removeLabelIds: ['UNREAD'] });
+        return response.result;
+    }
+
+    async getProcessedThread({ userId = 'me', threadId }) {
+        const response = await this.getThread({ userId, threadId });
+
+        return {
+            ...response.result,
+            messages: response.result.messages.map(message => parseMessage(message))
+        };
     }
 
 }

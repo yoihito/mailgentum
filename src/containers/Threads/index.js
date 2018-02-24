@@ -16,36 +16,59 @@ const ScrollableList = styled(Scrollable(EmptyList('There are no conversations w
     flex-grow: 1;
 `;
 
+const getLastThreadMessages = (threads) => {
+    return threads.map((thread) => thread.messages[thread.messages.length - 1])
+        .sort((a,b) => b.internalDate - a.internalDate);
+}
+
+const makeMapFromEntities = (entities) => {
+    return entities.reduce((acc, entity) => {
+        acc[entity.id] = entity; 
+        return acc;
+    }, {});
+}
+
 class Threads extends React.PureComponent {
 
     constructor(props) {
         super(props);
         this.state = { isLoading: true };
+
+        this.updateThread = this.updateThread.bind(this);
     }
 
     componentDidMount() {
         this.loadThreads(this.props.match.params);
     }
 
-    async loadThreads({ labelId }) {
+    async loadThreads({ labelId }) {    
         const threadsService = new ThreadsService();
         await delay(500);
         let threads = await threadsService.listDetailedThreads({ labelIds: labelId });
-        const lastThreadMessages = threads.map((thread) => thread.messages[thread.messages.length - 1]);
-        const threadsMap = threads.reduce((acc, thread) => {
-            acc[thread.id] = thread; 
-            return acc;
-        }, {});
+        const threadsMap = makeMapFromEntities(threads);
+        const lastThreadMessages = getLastThreadMessages(threads);
         this.setState({ 
             isLoading: false,
-            lastThreadMessages: lastThreadMessages.sort((a,b) => b.internalDate - a.internalDate),
-            threads: threadsMap
+            lastThreadMessages,
+            threadsMap,
         });
+    }
+
+    updateThread({ threadId, thread }) {
+        const prevThreadsMap = this.state.threadsMap;
+        prevThreadsMap[threadId] = thread;
+        const threads = Object.values(prevThreadsMap);
+        const threadsMap = makeMapFromEntities(threads);
+        const lastThreadMessages = getLastThreadMessages(threads);
+        this.setState({
+            lastThreadMessages,
+            threadsMap
+        })
     }
 
     render() {
         const { className, match: { params: { labelId } } } = this.props;
-        const { lastThreadMessages, isLoading, threads } = this.state;
+        const { lastThreadMessages, isLoading, threadsMap } = this.state;
         return (<div className={className}>
             {!isLoading && [
                 (<ScrollableList 
@@ -56,7 +79,13 @@ class Threads extends React.PureComponent {
                 (<Switch key="2">
                     <Route 
                         path={`/labels/${labelId}/threads/:threadId`}
-                        render={(props) => <Messages thread={threads[props.match.params.threadId]} {...props}/>}
+                        render={(props) => (
+                            <Messages 
+                                onThreadChanged={this.updateThread} 
+                                thread={threadsMap[props.match.params.threadId]} 
+                                {...props}
+                            />
+                        )}
                     />
                 </Switch>)
             ]}
