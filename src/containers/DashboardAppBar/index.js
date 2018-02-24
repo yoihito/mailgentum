@@ -12,7 +12,7 @@ class DashboardAppBar extends React.Component {
             <header className="DashboardAppBar">
                 <div className="DashboardAppBar-left">
                     <Link to="/labels/compose">
-                        <TopBarButton><i className="fa fa-pencil-square-o" /> compose</TopBarButton>
+                        <TopBarButton><span className="fa fa-pencil-square-o" /> compose</TopBarButton>
                     </Link>
                     <SearchInput />
                 </div>

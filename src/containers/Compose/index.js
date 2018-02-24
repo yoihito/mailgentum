@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Shadow from 'components/Shadow';
 import styled from 'styled-components';
 import MessagesService from 'apis/MessagesService';
 import ComposeForm from './ComposeForm';
@@ -10,6 +9,7 @@ class Compose extends React.Component {
     constructor(props) {
         super(props);
 
+        this.goBack = this.goBack.bind(this);
         this.submitMessage = this.submitMessage.bind(this);
     }
 
@@ -22,15 +22,25 @@ class Compose extends React.Component {
         }
     }
 
+    goBack() {
+        this.context.router.history.goBack();
+    }
+
     render() {
         return (
             <div className={this.props.className}>
+                <div>
+                    <button onClick={this.goBack}>Back</button>
+                </div>
                 <ComposeForm onSubmit={this.submitMessage}/>
             </div>
         );
     }
-
 }
+
+Compose.contextTypes = {
+    router: PropTypes.object,
+};
 
 Compose.propTypes = {
     className: PropTypes.string.isRequired
@@ -44,4 +54,4 @@ const StyledCompose = styled(Compose)`
     padding: 10px;
 `;
 
-export default Shadow(StyledCompose);
+export default StyledCompose;

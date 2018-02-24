@@ -8,7 +8,7 @@ class SearchInput extends React.Component {
             <div className="SearchInput">
                 <input type="text" className="SearchInput-input" placeholder="search messages" {...this.props}/>
                 <button className="SearchInput-icon">
-                    <i className="fa fa-search" />
+                    <span className="fa fa-search" />
                 </button>
             </div>
         )

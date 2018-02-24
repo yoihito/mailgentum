@@ -19,7 +19,7 @@ class Dashboard extends React.Component {
             <DashboardAppBar />
             <DashboardContent>
                 <Switch>
-                    <Redirect exact to="/labels/INBOX/" from="/labels"/>
+                    <Redirect exact to="/labels/INBOX" from="/labels"/>
                     <Route 
                         key="labels"
                         path="/labels"
@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
                             <Labels key="labels" {...props} onSignOut={onSignOut} />
                         )}  
                     />
-                    <Redirect to="/labels/INBOX/" />
+                    <Redirect to="/labels/INBOX" />
                 </Switch>
             </DashboardContent>
         </div>);
